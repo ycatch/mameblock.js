@@ -24,8 +24,5 @@
 	top: 12px;
 	right: 12px;
 	display: block;
-	width: 30px;
-	height: 30px;
-	background: url('../css/img/fancy_close.png') no-repeat;
 	z-index: 2;
 }
