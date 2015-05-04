@@ -27,10 +27,8 @@
 	</div> <!-- End Grid -->
 
     <div id="modal-window">
-      <!-- #modal-windowを閉じるボタンを置くためにdivを置く -->
-      <div class="modal_close"></div>
-      <!-- #modal-window内に表示する要素 -->
-      <div>Edit Area is here.</div>
+		<div class="modal_close"></div>
+		<div>Edit Area is here.</div>
     </div>
 
 	<!-- Javascript -->
@@ -39,7 +37,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$("a[rel*=leanModal]").leanModal({
-				top : 200,
+				top : 10,
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});

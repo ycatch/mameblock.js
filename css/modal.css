@@ -10,12 +10,13 @@
 }
 
 #modal-window {
-	background-color: #FFF;
+	background-color: #fff;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+	top: 0px;
 	display: none;
-	padding: 3px;
-	width: 100%;
-	height: 100%;
+	padding: 30px;
+	width: 98%;
+	height: 98%;
 }
  
 .modal_close {

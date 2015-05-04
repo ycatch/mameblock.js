@@ -23,6 +23,10 @@ MIT license
 
 ## leanModal.js
 
+v1.1
+
+by Ray Stone - http://finelysliced.com.au
+
 jquery.leanModal.min.js
 
 http://leanmodal.finelysliced.com.au/
