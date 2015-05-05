@@ -10,7 +10,8 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="css/modal.css" media="all" /> 
+	<link rel="stylesheet" type="text/css" href="css/modal.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/mameblock.css" media="all" />
 	
 </head>
 <body>
@@ -20,7 +21,7 @@
 			<div class="center">
 			<p >jQuery plug-in for visual code editing. <br />
 			This is working in progress.</p>
-			<p><a rel="leanModal" href="#modal-window">Click me</a></p>
+			<p><a rel="leanModal" href="#modal-window">Click: Open visual editor</a></p>
 			<p><a href="https://github.com/ycatch/mameblock" target="_blank">Github</a></p>
 			</div>
 		</div>
@@ -31,7 +32,7 @@
 
     <div id="modal-window">
 		<a class="modal_close" href="#">[close]</a>
-		<div>Edit Area is here.</div>
+		<div id="modalArea">Edit Area is here.</div>
     </div>
 
 	<!-- Javascript -->
@@ -45,11 +46,16 @@
 				closeButton: ".modal_close"
 			});
 			$(window).on('open:leanModal', function() {
-				alert('open!');
+				$("#modalArea").load("mameBlock_template.html #editArea", function(data) {
+					if(data == null){
+						$("#modalArea").append("read fails"); 
+					}
+				});
 			});
 		});
-
 	</script>
+	<script type="text/javascript" src="js/jquery-sortable.js"></script>
+	<script type="text/javascript" src="js/soramame.block.js"></script>
 
 </body>
 </html>
