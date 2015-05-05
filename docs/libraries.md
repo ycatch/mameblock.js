@@ -34,11 +34,17 @@ http://leanmodal.finelysliced.com.au/
 Available under the MIT and GPL licenses.
 
 
+fork by yosukesannohe
+
+https://github.com/yosukesannohe/leanModal.js
+
+
+
 ## jquery-sortable
 
 v0.9.4
 
-This is nested sortable most important parts of SoraMame.
+This is nested sortable most important parts MameBlock and Soramame.Block.
 
 It is not jquery-UI sortable.
 

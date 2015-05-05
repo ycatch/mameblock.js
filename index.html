@@ -44,7 +44,11 @@
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});
+			$(window).on('open:leanModal', function() {
+				alert('open!');
+			});
 		});
+
 	</script>
 
 </body>
