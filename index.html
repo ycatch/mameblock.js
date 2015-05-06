@@ -3,7 +3,7 @@
 <head>
 	<!-- META -->
 	<title>Mame Block - jQuery plugin for visual code editting.</title>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="" />
 	
@@ -32,16 +32,41 @@
 
     <div id="modal-window">
 		<a class="modal_close" href="#">[close]</a>
-		<iframe src="mameBlock_template.html" width="100%" height="100%" frameborder=0 >
-		Edit Area is here.
-		</iframe>
+		<div id="loading_area">Edit Area is here.</div>
     </div>
 
 	<!-- Javascript -->
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
-
+	<script type="text/javascript" src="js/jquery-sortable.js"></script>
+	<script type="text/javascript" src="js/soramame.block.js"></script>
 	<script type="text/javascript">
+		$("#loading_area").load("mameBlock_template.html #mame_template", function(data) {
+			if(data == null){
+				$("#loading_area").append("[Error]:read template"); 
+			} else {
+				$('ol.pallet-code').sortable({
+					group: 'connect-area',
+					drop: false,
+					onDragStart: function (item, container, _super) {
+						// Duplicate items of the no drop area
+						if(!container.options.drop) {
+							item.clone(true).insertAfter(item)
+						}
+						_super(item);
+					},
+				});
+
+				$('ol.block').sortable({
+					group: 'connect-area',
+				});
+
+				$('ol.trash-code').sortable({
+					group: 'connect-area',
+				});
+			}
+		});
+
 		$(function() {
 			$("a[rel*=leanModal]").leanModal({
 				top : 10,
