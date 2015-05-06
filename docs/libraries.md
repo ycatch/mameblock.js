@@ -37,7 +37,7 @@ Available under the MIT and GPL licenses.
 fork by yosukesannohe
 
 https://github.com/yosukesannohe/leanModal.js
-
+http://qiita.com/yosukesannohe/items/f716ed3b24eae9252d24
 
 
 ## jquery-sortable

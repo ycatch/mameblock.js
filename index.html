@@ -84,10 +84,15 @@
 
 		$(function() {
 			$("a[rel*=mameEdit]").leanModal({
+				top: 10,
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});
 			
+			$(window).on('open:leanModal', function() {
+				$("#modal-window").css("top", $(window).scrollTop());
+			})
+
 			$(window).on('close:leanModal', function() {
 				MAME_BLOCK.setSerializeBlock();
 			})
