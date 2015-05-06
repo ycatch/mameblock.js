@@ -82,13 +82,15 @@
 			}
 		});
 
-
 		$(function() {
 			$("a[rel*=mameEdit]").leanModal({
-
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});
+			
+			$(window).on('close:leanModal', function() {
+				MAME_BLOCK.setSerializeBlock();
+			})
 		});
 
 	</script>
