@@ -72,7 +72,7 @@
 
 	/** connect for SoraMame.Block and jquery-sortable =============
 	 */
-	$('ol.pallet-code').sortable({
+ 	$('ol.pallet-code').sortable({
 		group: 'connect-area',
 		drop: false,
 		onDragStart: function (item, container, _super) {

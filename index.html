@@ -32,12 +32,15 @@
 
     <div id="modal-window">
 		<a class="modal_close" href="#">[close]</a>
-		<div id="modalArea">Edit Area is here.</div>
+		<iframe src="mameBlock_template.html" width="100%" height="100%" frameborder=0 >
+		Edit Area is here.
+		</iframe>
     </div>
 
 	<!-- Javascript -->
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+
 	<script type="text/javascript">
 		$(function() {
 			$("a[rel*=leanModal]").leanModal({
@@ -45,17 +48,8 @@
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});
-			$(window).on('open:leanModal', function() {
-				$("#modalArea").load("mameBlock_template.html #editArea", function(data) {
-					if(data == null){
-						$("#modalArea").append("read fails"); 
-					}
-				});
-			});
 		});
 	</script>
-	<script type="text/javascript" src="js/jquery-sortable.js"></script>
-	<script type="text/javascript" src="js/soramame.block.js"></script>
 
 </body>
 </html>
