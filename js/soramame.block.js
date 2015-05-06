@@ -66,8 +66,8 @@
 	});
 
 	/** add Single Global var. */
-	if (typeof window.SORAMAME_BLOCK == "undefined") {
-		window.SORAMAME_BLOCK = soramame;
+	if (typeof window.MAME_BLOCK == "undefined") {
+		window.MAME_BLOCK = soramame;
 	}
 
 	/** connect for SoraMame.Block and jquery-sortable =============

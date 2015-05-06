@@ -53,3 +53,21 @@ jquery-sortable.js is released under the Modified BSD License.
 
 http://johnny.github.io/jquery-sortable/
 
+
+## js-beautify
+
+Copyright (c) 2007-2013 Einar Lielmanis and contributors.
+
+Beautifier for javascript
+
+http://jsbeautifier.org/
+https://github.com/beautify-web/js-beautify
+
+
+## highlight.js
+
+Syntax highlighting for the Web.
+
+https://highlightjs.org/
+
+
