@@ -19,18 +19,22 @@
 	<div class="grid">
 		<div class="col_12" style="margin-top:60px;">
 			<h1>MameBlock</h1>
-			<div>
 			<p >MameBlock is jQuery plug-in for visual code editting.<br />
 			This is working in progress.</p>
-			<p><a rel="mameEdit" href="#modal-window">Click: Open visual editor</a></p>
 			<p><a href="https://github.com/ycatch/mameblock" target="_blank">Github</a></p>
-			</div>
 		</div>
 		<div class="col_12">
 			<h2>Example</h2>
+			
+			<ul class="button-bar">
+				<li><a class="first" rel="mameEdit" href="#modal-window">Edit</a></li>
+				<li><a class="last" href="">Run</a></li>
+			</ul>
+			<p></p>
 			<pre>
 				<code class="js" id="example_1"></code>
 			</pre>
+
 		</div>
 		<div class="col_12" id="footer">
 			Copyright 2015 Yutaka Kachi All Rights Reserved.
@@ -81,7 +85,7 @@
 
 		$(function() {
 			$("a[rel*=mameEdit]").leanModal({
-				top : 10,
+
 				overlay : 0.4,
 				closeButton: ".modal_close"
 			});
