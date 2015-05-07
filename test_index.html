@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>MameBlock.js - Javascript library for visual code editing.</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/modal.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/mameblock.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/highlight_default.css" media="all" />
+	
+</head>
+<body>
+	<div class="grid">
+		<div class="col_12" style="margin-top:60px;">
+			<h1>MameBlock.js</h1>
+			<p >MameBlock.js is Javascript library for visual code editing.<br />
+			This is working in progress.</p>
+			<p><a href="https://github.com/ycatch/mameblock.js" target="_blank">Github</a></p>
+		</div>
+		<div class="col_12">
+			<h2>Example - FizzBuzz</h2>
+			
+			<ul class="button-bar">
+				<li><a class="first" id="mameEdit" href="">Edit</a></li>
+				<li><a class="last" id="mameRun" href="">Run</a></li>
+			</ul>
+			<p></p>
+			<pre id="exampleArea"></pre>
+		</div>
+		<div class="col_12" id="footer">
+			Copyright 2015 Yutaka Kachi All Rights Reserved.
+		</div>
+	</div> <!-- End Grid -->
+
+    <div id="modal-window">
+		<a class="modal_close" href="#">[close]</a>
+		<div id="loading_area">Edit Area is here.</div>
+    </div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+	<script type="text/javascript" src="js/jquery-sortable.js"></script>
+	<script type="text/javascript" src="js/mameBlock.js"></script>
+	<script type="text/javascript" src="js/beautify.js"></script>
+	<script type="text/javascript" src="js/highlight.pack.js"></script>	
+	<script type="text/javascript">
+	$(function() {
+		<!-- init -->
+		var codeText = mameBlock.getCode();
+		var codeArea = $("#exampleArea");
+		setCode(codeText, codeArea);
+		
+		<!-- Edit -->
+		$('#mameEdit').click(function() {
+			<!-- popup Editor and change code -->
+			setCode(mameBlock.getCode(), codeArea);
+		});
+	
+		<!-- Run -->
+		$('#mameRun').click(function() {
+			<!-- get code -->
+			setCode(mameBlock.getCode(), codeArea);
+			mameExec = new Function(codeText);
+			mameExec();
+		});
+
+		<!-- set code and syntax highlight -->
+		function setCode(code, codeArea) {
+			codeArea.text(code);
+			codeArea.each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+		}
+	})();
+	</script>
+
+</body>
+</html>
