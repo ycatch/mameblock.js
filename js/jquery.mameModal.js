@@ -1,7 +1,16 @@
+// change name from leanModal to mameModal by kachi.
+//
+// fork from leanModal by yosukesannohe
+// https://github.com/yosukesannohe/leanModal.js
+
+// leanModal v1.1 by Ray Stone - http://finelysliced.com.au
+// Dual licensed under the MIT and GPL
+
 ;(function($){
   $.fn.extend({ 
     mameModal: function(options) {
       var defaults = {
+		top: 100,
         overlay: 0.5,
         duration: 200,
         closeButton: null
@@ -44,10 +53,11 @@
               'position' : 'absolute',
               'opacity' : 0,
               'z-index': 11000,
-              'top' : '50%',
+              //'top' : '50%',
+			  //'top' : o.top + "px",
               'left' : '50%',
               'margin-left' : -(modal_width/2) + 'px',
-              'margin-top': -(modal_height/2) + 'px'
+              //'margin-top': -(modal_height/2) + 'px'
             })
             .fadeTo(200,1);
           
