@@ -1,14 +1,7 @@
-// fork from leamModal by yosukesannohe
-// https://github.com/yosukesannohe/leanModal.js
-
-// leanModal v1.1 by Ray Stone - http://finelysliced.com.au
-// Dual licensed under the MIT and GPL
-
 ;(function($){
   $.fn.extend({ 
-    leanModal: function(options) {
+    mameModal: function(options) {
       var defaults = {
-		top: 100,
         overlay: 0.5,
         duration: 200,
         closeButton: null
@@ -31,7 +24,7 @@
               modal_height = $modal.outerHeight(),
               modal_width = $modal.outerWidth();
 
-          $window.trigger('open:leanModal');
+          $window.trigger('open:mameModal');
 
           overlay.one('click', function() {
             close_modal(modal_id);                    
@@ -51,11 +44,10 @@
               'position' : 'absolute',
               'opacity' : 0,
               'z-index': 11000,
-              //'top' : '50%',
-			  //'top' : o.top + "px",
+              'top' : '50%',
               'left' : '50%',
               'margin-left' : -(modal_width/2) + 'px',
-              //'margin-top': -(modal_height/2) + 'px'
+              'margin-top': -(modal_height/2) + 'px'
             })
             .fadeTo(200,1);
           
@@ -65,7 +57,7 @@
 
       function close_modal(modal_id){
         overlay.fadeOut(duration, function() {
-          $window.trigger('close:leanModal');  
+          $window.trigger('close:mameModal');  
         });
         $(modal_id).css({ 'display' : 'none' });
       }

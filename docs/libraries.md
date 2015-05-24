@@ -21,6 +21,21 @@ Copyright 2014 The jQuery Foundation
 MIT license
 
 
+## jquery-sortable
+
+v0.9.4
+
+This is nested sortable most important parts MameBlock and Soramame.Block.
+
+It is not jquery-UI sortable.
+
+jquery-sortable is created by Jonas von Andrian.
+jquery-sortable.js is released under the Modified BSD License.
+
+http://johnny.github.io/jquery-sortable/
+
+
+
 ## leanModal.js
 
 v1.1
@@ -38,20 +53,6 @@ fork by yosukesannohe
 
 https://github.com/yosukesannohe/leanModal.js
 http://qiita.com/yosukesannohe/items/f716ed3b24eae9252d24
-
-
-## jquery-sortable
-
-v0.9.4
-
-This is nested sortable most important parts MameBlock and Soramame.Block.
-
-It is not jquery-UI sortable.
-
-jquery-sortable is created by Jonas von Andrian.
-jquery-sortable.js is released under the Modified BSD License.
-
-http://johnny.github.io/jquery-sortable/
 
 
 ## js-beautify
