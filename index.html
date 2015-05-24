@@ -28,12 +28,10 @@
 			
 			<ul class="button-bar">
 				<li><a class="first" id="mameEdit" href="#modal-window">Edit</a></li>
-				<li><a class="last" href="#">Run</a></li>
+				<li><a class="last" id="mameRun" href="#">Run</a></li>
 			</ul>
 			<p></p>
-			<pre>
-				<code class="js" id="example_1"></code>
-			</pre>
+			<pre id="exampleArea"></pre>
 
 		</div>
 		<div class="col_12" id="footer">
@@ -54,23 +52,45 @@
 	<script type="text/javascript" src="js/beautify.js"></script>
 	<script type="text/javascript" src="js/highlight.pack.js"></script>	
 	<script type="text/javascript">
-		$(function() {
-			MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+	$(function() {
+		<!-- init -->
+		var codeArea = $("#exampleArea");
+		MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+		setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 
-			$("#mameEdit").mameModal({
-				top: 10,
-				overlay : 0.4,
-				closeButton: ".modal_close"
-			});
-			
-			$(window).on('open:mameModal', function() {
-				$("#modal-window").css("top", $(window).scrollTop());
-			})
-
-			$(window).on('close:mameModal', function() {
-				MAME_BLOCK.setSerializeBlock();
-			})
+		<!-- Edit -->
+		$("#mameEdit").mameModal({
+			top: 10,
+			overlay : 0.4,
+			closeButton: ".modal_close"
 		});
+		
+		$(window).on('open:mameModal', function() {
+			$("#modal-window").css("top", $(window).scrollTop());
+		})
+
+		$(window).on('close:mameModal', function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		})
+			
+		<!-- Run -->
+		$("#mameRun").click(function() {
+			<!-- get code -->
+			var codeText = MAME_BLOCK.getCodeBlock();
+			setCode(codeText, codeArea);
+			mameExec = new Function(codeText);
+			mameExec();
+		});
+		
+		<!-- set code and syntax highlight -->
+		function setCode(code, codeArea) {
+			codeArea.text(code);
+			codeArea.each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+		}
+
+	})();
 
 	</script>
 

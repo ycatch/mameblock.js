@@ -33,7 +33,6 @@
 					group: 'connect-area',
 				});
 
-				MAME_BLOCK.setSerializeBlock();
 			}
 		});
 	};
@@ -48,26 +47,12 @@
 	
 	/** Serialize and transfer from blocks to code.  =============
 	*/
-	var getCodeBlock = function() {
+	soramame.getCodeBlock = function() {
 		var data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
 		data = data.replace(/\t+-+/g, "\n");
 		return js_beautify(data);
 	};
 
-	soramame.setSerializeBlock  = function() {
-		var codeText = getCodeBlock();
-		$("pre code").text(codeText);
-		
-		$('pre code').each(function(i, block) {
-			hljs.highlightBlock(block);
-		});
-	};
-	
-	soramame.execCodeBlock = function() {
-		var codeText = getCodeBlock();
-		soramame.exec = new Function(codeText);
-		soramame.exec();
-	};
 
 	/** Express Line Editor for SoraMame.Block =============
 		Using Modal.js of bootstrap
