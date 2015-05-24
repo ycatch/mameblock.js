@@ -5,6 +5,38 @@
 (function() {
 	var soramame = {};
 	var expDialog_hundle = {}; //for Express Line Editor
+
+	/** connect for mameBlock and jquery-sortable =============
+	 */
+	soramame.init = function(code_area, templateName) {
+		$(code_area).load(templateName, function(data) {
+			if(data == null){
+				$(code_area).append("[Error]:read template"); 
+			} else {
+				$('ol.pallet-code').sortable({
+					group: 'connect-area',
+					drop: false,
+					onDragStart: function (item, container, _super) {
+						// Duplicate items of the no drop area
+						if(!container.options.drop) {
+							item.clone(true).insertAfter(item)
+						}
+						_super(item);
+					},
+				});
+
+				$('ol.block').sortable({
+					group: 'connect-area',
+				});
+
+				$('ol.trash-code').sortable({
+					group: 'connect-area',
+				});
+
+				MAME_BLOCK.setSerializeBlock();
+			}
+		});
+	};
 	
 	/** clearTrash =============
 	 */
@@ -69,28 +101,6 @@
 	if (typeof window.MAME_BLOCK == "undefined") {
 		window.MAME_BLOCK = soramame;
 	}
-
-	/** connect for SoraMame.Block and jquery-sortable =============
-	 */
- 	$('ol.pallet-code').sortable({
-		group: 'connect-area',
-		drop: false,
-		onDragStart: function (item, container, _super) {
-			// Duplicate items of the no drop area
-			if(!container.options.drop) {
-				item.clone(true).insertAfter(item)
-			}
-			_super(item);
-		},
-	});
-
-	$('ol.block').sortable({
-		group: 'connect-area',
-	});
-
-	$('ol.trash-code').sortable({
-		group: 'connect-area',
-	});
 	
 })()
 

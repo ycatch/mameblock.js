@@ -54,35 +54,9 @@
 	<script type="text/javascript" src="js/beautify.js"></script>
 	<script type="text/javascript" src="js/highlight.pack.js"></script>	
 	<script type="text/javascript">
-		$("#loading_area").load("mameBlock_template.html #mame_template", function(data) {
-			if(data == null){
-				$("#loading_area").append("[Error]:read template"); 
-			} else {
-				$('ol.pallet-code').sortable({
-					group: 'connect-area',
-					drop: false,
-					onDragStart: function (item, container, _super) {
-						// Duplicate items of the no drop area
-						if(!container.options.drop) {
-							item.clone(true).insertAfter(item)
-						}
-						_super(item);
-					},
-				});
-
-				$('ol.block').sortable({
-					group: 'connect-area',
-				});
-
-				$('ol.trash-code').sortable({
-					group: 'connect-area',
-				});
-
-				MAME_BLOCK.setSerializeBlock();
-			}
-		});
-
 		$(function() {
+			MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+
 			$("#mameEdit").mameModal({
 				top: 10,
 				overlay : 0.4,
