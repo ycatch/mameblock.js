@@ -11,7 +11,7 @@
 	soramame.init = function(code_area, templateName) {
 		$(code_area).load(templateName, function(data) {
 			if(data == null){
-				$(code_area).append("[Error]:read template"); 
+				$(code_area).append("Error:init, missing template"); 
 			} else {
 				$('ol.pallet-code').sortable({
 					group: 'connect-area',
@@ -32,7 +32,6 @@
 				$('ol.trash-code').sortable({
 					group: 'connect-area',
 				});
-
 			}
 		});
 	};
@@ -48,9 +47,21 @@
 	/** Serialize and transfer from blocks to code.  =============
 	*/
 	soramame.getCodeBlock = function() {
-		var data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
-		data = data.replace(/\t+-+/g, "\n");
-		return js_beautify(data);
+		var data = "",
+			retryCount = 2;
+
+		do {
+			data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
+			retryCount -= 1;
+		} while(retryCount > 0 && data === "")
+
+		if (data === "") {
+			data = "Error: getCodeBlock, null" + data;
+		} else {
+			data = js_beautify(data.replace(/\t+-+/g, "\n"));
+		}		
+
+		return data;
 	};
 
 
@@ -89,7 +100,7 @@
 	
 })()
 
-SORAMAME_BLOCK.app = {
+MAME_BLOCK.app = {
 	msg: "Hello SoraMame Block"
 
 };

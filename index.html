@@ -41,7 +41,7 @@
 
     <div id="modal-window">
 		<a class="modal_close" href="#">[close]</a>
-		<div id="loading_area">Edit Area is here.</div>
+		<div id="loading_area">Edit Area:</div>
     </div>
 
 	<!-- Javascript -->
@@ -55,7 +55,7 @@
 	$(function() {
 		<!-- init -->
 		var codeArea = $("#exampleArea");
-		MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
 		setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 
 		<!-- Edit -->
@@ -88,9 +88,9 @@
 			codeArea.each(function(i, block) {
 				hljs.highlightBlock(block);
 			});
-		}
+		};
 
-	})();
+	});
 
 	</script>
 
