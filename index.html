@@ -53,16 +53,16 @@
 	<script type="text/javascript" src="js/highlight.pack.js"></script>	
 	<script type="text/javascript">
 	$(function() {
-		<!-- Init -->
+		<!-- # Init -->
 		var codeArea = $("#exampleArea");
 		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
 		<!-- wait for DOM building -->
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-		}, 50);
+		}, 10);
 
-		
-		<!-- Edit -->
+
+		<!-- # Edit -->
 		$("#mameEdit").mameModal({
 			top: 10,
 			overlay : 0.4,
@@ -77,16 +77,16 @@
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		})
 			
-		<!-- Run -->
+		<!-- # Run -->
 		$("#mameRun").click(function() {
 			<!-- get code -->
 			var codeText = MAME_BLOCK.getCodeBlock();
 			setCode(codeText, codeArea);
-			mameExec = new Function(codeText);
+			var mameExec = new Function(codeText);
 			mameExec();
 		});
 		
-		<!-- set code and syntax highlight -->
+		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
 			codeArea.text(code);
 			codeArea.each(function(i, block) {
