@@ -48,15 +48,16 @@
 	*/
 	soramame.getCodeBlock = function() {
 		var data = "",
-			retryCount = 2;
+			retryCount = 0;
+			retryLimit = 3;
 
 		do {
 			data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
-			retryCount -= 1;
-		} while(retryCount > 0 && data === "")
+			retryCount += 1;
+		} while(retryCount <= retryLimit && data === "")
 
 		if (data === "") {
-			data = "Error: getCodeBlock, null" + data;
+			data = "Error: getCodeBlock, null:" + retryCount;
 		} else {
 			data = js_beautify(data.replace(/\t+-+/g, "\n"));
 		}		

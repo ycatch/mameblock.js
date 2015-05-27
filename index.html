@@ -24,7 +24,7 @@
 			<p><a href="https://github.com/ycatch/mameblock.js" target="_blank">Github</a></p>
 		</div>
 		<div class="col_12">
-			<h2>Example</h2>
+			<h3>Example</h3>
 			
 			<ul class="button-bar">
 				<li><a class="first" id="mameEdit" href="#modal-window">Edit</a></li>
@@ -53,11 +53,15 @@
 	<script type="text/javascript" src="js/highlight.pack.js"></script>	
 	<script type="text/javascript">
 	$(function() {
-		<!-- init -->
+		<!-- Init -->
 		var codeArea = $("#exampleArea");
 		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
-		setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		<!-- wait for DOM building -->
+		var wait0 = setTimeout(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		}, 50);
 
+		
 		<!-- Edit -->
 		$("#mameEdit").mameModal({
 			top: 10,
