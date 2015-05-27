@@ -6,36 +6,42 @@
 	var soramame = {};
 	var expDialog_hundle = {}; //for Express Line Editor
 
-	/** connect for mameBlock and jquery-sortable =============
+	/** init connect for mameBlock and jquery-sortable =============
 	 */
 	soramame.init = function(code_area, templateName) {
 		$(code_area).load(templateName, function(data) {
 			if(data == null){
 				$(code_area).append("Error:init, missing template"); 
 			} else {
-				$('ol.pallet-code').sortable({
-					group: 'connect-area',
-					drop: false,
-					onDragStart: function (item, container, _super) {
-						// Duplicate items of the no drop area
-						if(!container.options.drop) {
-							item.clone(true).insertAfter(item)
-						}
-						_super(item);
-					},
-				});
-
-				$('ol.block').sortable({
-					group: 'connect-area',
-				});
-
-				$('ol.trash-code').sortable({
-					group: 'connect-area',
-				});
+				soramame.blockInit();
 			}
 		});
 	};
 	
+	/** connect for mameBlock and jquery-sortable =============
+	 */
+	soramame.blockInit = function() {
+		$('ol.pallet-code').sortable({
+			group: 'connect-area',
+			drop: false,
+			onDragStart: function (item, container, _super) {
+				// Duplicate items of the no drop area
+				if(!container.options.drop) {
+					item.clone(true).insertAfter(item)
+				}
+				_super(item);
+			},
+		});
+
+		$('ol.block').sortable({
+			group: 'connect-area',
+		});
+
+		$('ol.trash-code').sortable({
+			group: 'connect-area',
+		});
+	}
+
 	/** clearTrash =============
 	 */
 	soramame.clearTrash = function() {
