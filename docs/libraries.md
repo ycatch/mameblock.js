@@ -25,7 +25,7 @@ MIT license
 
 v0.9.4
 
-This is nested sortable most important parts MameBlock and Soramame.Block.
+This is nested sortable, most important parts MameBlock and Soramame.Block.
 
 It is not jquery-UI sortable.
 
@@ -69,6 +69,19 @@ https://github.com/beautify-web/js-beautify
 
 Syntax highlighting for the Web.
 
+Copyright (c) 2006, Ivan Sagalaev All rights reserved.
+
+Highlight.js is released under the BSD License.
+
 https://highlightjs.org/
+
+
+## HTML KickStart Framework
+
+Copyright c 2011-2012 Joshua Gatcke http://www.99lime.com | HTML KickStart
+
+http://www.99lime.com/elements/
+
+Version: 0.94
 
 
