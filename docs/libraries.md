@@ -1,4 +1,4 @@
-Libraryies list
+Libraries list
 
 # CSS Framework
 
@@ -7,6 +7,7 @@ Copyright c 2011-2012 Joshua Gatcke http://www.99lime.com | HTML KickStart
 Version: 0.94
 
 Released under the MIT LICENSE.
+
 
 
 # Javascript Library
@@ -36,23 +37,16 @@ http://johnny.github.io/jquery-sortable/
 
 
 
-## leanModal.js
+## easyModal.js
 
-v1.1
-
-by Ray Stone - http://finelysliced.com.au
-
-jquery.leanModal.min.js
-
-http://leanmodal.finelysliced.com.au/
-
-Available under the MIT and GPL licenses.
-
-
-fork by yosukesannohe
-
-https://github.com/yosukesannohe/leanModal.js
-http://qiita.com/yosukesannohe/items/f716ed3b24eae9252d24
+easyModal.js v1.3.2
+* A minimal jQuery modal that works with your CSS.
+* Author: Flavius Matis - http://flaviusmatis.github.com/
+* URL: https://github.com/flaviusmatis/easyModal.js
+*
+* Copyright 2012, Flavius Matis
+* Released under the MIT license.
+* http://flaviusmatis.github.com/license.html
 
 
 ## js-beautify
@@ -76,12 +70,5 @@ Highlight.js is released under the BSD License.
 https://highlightjs.org/
 
 
-## HTML KickStart Framework
-
-Copyright c 2011-2012 Joshua Gatcke http://www.99lime.com | HTML KickStart
-
-http://www.99lime.com/elements/
-
-Version: 0.94
 
 
