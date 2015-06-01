@@ -20,8 +20,20 @@
 	/* height: 98%; */
 	overflow:auto;
 }
- 
-.modal_close {
+
+#modal-express {
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+	/* top: 0px; */
+	display: none;
+	padding: 30px;
+	width: 50%;
+	/* height: 30%; */
+	overflow:auto;
+ }
+
+#editor_close, .modal_close {
 	position: absolute;
 	top: 12px;
 	right: 12px;

@@ -40,6 +40,32 @@
 		$('ol.trash-code').sortable({
 			group: 'connect-area',
 		});
+		
+		/** Init Express Editor */
+		$("#modal-express").mameModal();
+
+		/** Open express editor */
+		$('span.exp-body').click(function(){
+			$('#modal-express').trigger('openModal');
+			expDialog_hundle = $(this);
+			openExpDialog(expDialog_hundle.text());
+		});
+		
+		/** Close express editor */
+		$('.modal_close').click(function(e){
+			$('#modal-express').trigger('closeModal');
+			
+			var strTextBox = $('#expModalText').val();
+			expDialog_hundle.text(strTextBox);
+			var itemName = expDialog_hundle.attr('class').split(" ")[1];
+			expDialog_hundle.parent().next().find('span.' + itemName).text(strTextBox)
+		});
+		
+		var openExpDialog = function(expBody) {
+			var textArea = $('#expModalText');
+			textArea.attr("size", (expBody.length < 10)? 10 : expBody.length * 2);
+			textArea.val(expBody).focus();
+		}
 	}
 
 	/** clearTrash =============
@@ -71,43 +97,9 @@
 		return data;
 	};
 
-
-	/** Express Line Editor for SoraMame.Block =============
-		Using Modal.js of bootstrap
-	 */
-	var openExpDialog = function(expBody) {
-		$('#expModalDialog').modal();
-		var textArea = $('#expModalText');
-		textArea.attr("size",(expBody.length < 10)? 10 : expBody.length * 2);
-		textArea.val(expBody);
-	};
-	
-	$('span.exp-body').click(function() {
-		expDialog_hundle = $(this);
-		openExpDialog(expDialog_hundle.text());
-	})
-	
-	/** When open dialog, focus on textbox for bootstrap3 */
-	$('#expModalDialog').on('shown.bs.modal', function () {  
-		$('#expModalText').focus();  
-	});  
-	
-	$('#btn_ok_expModalDialog').click(function() {
-		var strTextBox = $('#expModalText').val();
-		expDialog_hundle.text(strTextBox);
-		var itemName = expDialog_hundle.attr('class').split(" ")[1];
-		expDialog_hundle.parent().next().find('span.' + itemName).text(strTextBox)
-		$('#expModalDialog').modal('hide');
-	});
-
 	/** add Single Global var. */
 	if (typeof window.MAME_BLOCK == "undefined") {
 		window.MAME_BLOCK = soramame;
 	}
 	
 })()
-
-MAME_BLOCK.app = {
-	msg: "Hello SoraMame Block"
-
-};

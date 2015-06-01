@@ -19,8 +19,7 @@
 	<div class="grid">
 		<div class="col_12" style="margin-top:60px;">
 			<h1>MameBlock.js</h1>
-			<p >MameBlock.js is Javascript library for visual code editing.<br />
-			This is working in progress.</p>
+			<p >MameBlock.js is Javascript library for visual code editing.</p>
 			<p><a href="https://github.com/ycatch/mameblock.js" target="_blank">Github</a></p>
 		</div>
 		<div class="col_12">
@@ -39,16 +38,24 @@
 		</div>
 	</div> <!-- End Grid -->
 
+	<div id="modal-express">
+		<div class="modal-body">
+			<label for="expModalText">Edit expression</label><br />
+			<input id="expModalText" type="text" />
+		</div>
+		<a class="modal_close" href="#">[OK]</a>
+    </div>
+
     <div id="modal-window">
-		<a class="modal_close" href="#">[close]</a>
+		<a id="editor_close" href="#">[OK]</a>
 		<div id="loading_area">Edit Area:</div>
     </div>
 
 	<!-- Javascript -->
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mameModal.js"></script>
 	<script type="text/javascript" src="js/jquery-sortable.js"></script>
 	<script type="text/javascript" src="js/mameBlock.js"></script>
+	<script type="text/javascript" src="js/jquery.mameModal.js"></script>
 	<script type="text/javascript" src="js/beautify.js"></script>
 	<script type="text/javascript" src="js/highlight.pack.js"></script>	
 	<script type="text/javascript">
@@ -56,26 +63,25 @@
 		<!-- # Init -->
 		var codeArea = $("#exampleArea");
 		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
-		<!-- wait for DOM building -->
+		/* wait for DOM building */
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-		}, 10);
-
-
+		}, 100);
+		
 		<!-- # Edit -->
-		$("#mameEdit").mameModal({
-			top: 10,
-			overlay : 0.4,
-			closeButton: ".modal_close"
+		$("#modal-window").mameModal();
+
+		$('#mameEdit').click(function(e){
+			var $modalWindow = $('#modal-window');
+			$modalWindow.trigger('openModal');
+			e.preventDefault();
 		});
 		
-		$(window).on('open:mameModal', function() {
-			$("#modal-window").css("top", $(window).scrollTop());
-		})
-
-		$(window).on('close:mameModal', function() {
+		$('#editor_close').click(function(e){
+			$('#modal-window').trigger('closeModal');
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-		})
+			e.preventDefault();
+		});
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
