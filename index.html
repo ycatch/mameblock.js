@@ -69,16 +69,19 @@
 		}, 100);
 		
 		<!-- # Edit -->
-		$("#modal-window").mameModal();
+		$("#modal-window").mameModal({
+			closeOnEscape: false
+		});
 
 		$('#mameEdit').click(function(e){
-			var $modalWindow = $('#modal-window');
-			$modalWindow.trigger('openModal');
+			MAME_BLOCK.copyCodeBlock("#mame_template");
+			$('#modal-window').trigger('openModal');
 			e.preventDefault();
 		});
 		
 		$('#editor_close').click(function(e){
 			$('#modal-window').trigger('closeModal');
+			MAME_BLOCK.reloadCodeBlock();
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 			e.preventDefault();
 		});

@@ -4,23 +4,25 @@
  
 (function() {
 	var soramame = {};
+	soramame.buffer = ""; 
 	var expDialog_hundle = {}; //for Express Line Editor
 
-	/** init connect for mameBlock and jquery-sortable =============
+	/** load mameBlock template =============
 	 */
 	soramame.init = function(code_area, templateName) {
 		$(code_area).load(templateName, function(data) {
 			if(data == null){
 				$(code_area).append("Error:init, missing template"); 
 			} else {
-				soramame.blockInit();
+				soramame.buffer = $("#loading_area").html();
+				blockInit();
 			}
 		});
 	};
 	
 	/** connect for mameBlock and jquery-sortable =============
 	 */
-	soramame.blockInit = function() {
+	blockInit = function() {
 		$('ol.pallet-code').sortable({
 			group: 'connect-area',
 			drop: false,
@@ -42,13 +44,16 @@
 		});
 		
 		/** Init Express Editor */
-		$("#modal-express").mameModal();
+		$("#modal-express").mameModal({
+			closeOnEscape: false
+		});
 
 		/** Open express editor */
 		$('span.exp-body').click(function(){
 			$('#modal-express').trigger('openModal');
 			expDialog_hundle = $(this);
 			openExpDialog(expDialog_hundle.text());
+			e.preventDefault();
 		});
 		
 		/** Close express editor */
@@ -59,6 +64,7 @@
 			expDialog_hundle.text(strTextBox);
 			var itemName = expDialog_hundle.attr('class').split(" ")[1];
 			expDialog_hundle.parent().next().find('span.' + itemName).text(strTextBox)
+			e.preventDefault();
 		});
 		
 		var openExpDialog = function(expBody) {
@@ -79,22 +85,20 @@
 	/** Serialize and transfer from blocks to code.  =============
 	*/
 	soramame.getCodeBlock = function() {
-		var data = "",
-			retryCount = 0;
-			retryLimit = 3;
-
-		do {
-			data = $('.serialize .code-body').text().replace(/\t+\n/g, "");
-			retryCount += 1;
-		} while(retryCount <= retryLimit && data === "")
-
-		if (data === "") {
-			data = "Error: getCodeBlock, null:" + retryCount;
-		} else {
-			data = js_beautify(data.replace(/\t+-+/g, "\n"));
-		}		
-
+		var data = $(soramame.buffer).find('.serialize .code-body').text().replace(/\t+\n/g, "");
+		data = js_beautify(data.replace(/\t+-+/g, "\n"));
 		return data;
+	};
+	
+	soramame.copyCodeBlock = function(code_area) {
+		$("#mame_template").html(soramame.buffer);
+		blockInit();
+		//alert("copy: " + soramame.buffer);
+	};
+	
+	soramame.reloadCodeBlock = function() {
+		soramame.buffer = $("#loading_area").html();
+		//alert("reload: ");
 	};
 
 	/** add Single Global var. */
