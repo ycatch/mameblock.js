@@ -70,5 +70,19 @@ Highlight.js is released under the BSD License.
 https://highlightjs.org/
 
 
+## Font Awesome
+
+scalable vector icons with the power of CSS.
+
+Font Awesome by Dave Gandy 
+
+http://fortawesome.github.io/Font-Awesome/
+
+* Font License : SIL OFL 1.1
+* http://scripts.sil.org/OFL
+
+* Code : MIT License
+* Documentation : CC BY 3.0
+
 
 

@@ -15,14 +15,14 @@
 				$(code_area).append("Error:init, missing template"); 
 			} else {
 				soramame.buffer = $("#loading_area").html();
-				blockInit();
+				soramame.blockInit();
 			}
 		});
 	};
 	
 	/** connect for mameBlock and jquery-sortable =============
 	 */
-	blockInit = function() {
+	soramame.blockInit = function() {
 		$('ol.pallet-code').sortable({
 			group: 'connect-area',
 			drop: false,
@@ -72,8 +72,18 @@
 			textArea.attr("size", (expBody.length < 10)? 10 : expBody.length * 2);
 			textArea.val(expBody).focus();
 		}
+		
+		/** accordion toolbox =============
+		 */
+		$('.accordion_part').hide();
+		$('.accordion_part.open').show();
+		
+		$('#toolbox .accordion').click(function(e){
+			$(this).next().slideToggle("fast");
+			$(this).toggleClass("open");
+		});	
 	}
-
+  
 	/** clearTrash =============
 	 */
 	soramame.clearTrash = function() {
@@ -92,7 +102,7 @@
 	
 	soramame.copyCodeBlock = function(code_area) {
 		$("#mame_template").html(soramame.buffer);
-		blockInit();
+		soramame.blockInit();
 		//alert("copy: " + soramame.buffer);
 	};
 	
