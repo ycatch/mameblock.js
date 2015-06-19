@@ -23,6 +23,8 @@
 	/** connect for mameBlock and jquery-sortable =============
 	 */
 	soramame.blockInit = function() {
+		
+		/** Init jquery-sortable */
 		$('ol.pallet-code').sortable({
 			group: 'connect-area',
 			drop: false,
@@ -103,12 +105,10 @@
 	soramame.copyCodeBlock = function(code_area) {
 		$("#mame_template").html(soramame.buffer);
 		soramame.blockInit();
-		//alert("copy: " + soramame.buffer);
 	};
 	
 	soramame.reloadCodeBlock = function() {
 		soramame.buffer = $("#loading_area").html();
-		//alert("reload: ");
 	};
 
 	/** add Single Global var. */

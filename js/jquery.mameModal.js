@@ -99,7 +99,7 @@
 
                 $modal.css({
                     'display': 'none',
-                    'position' : 'fixed',
+                    'position' : 'absolute', //'position' : 'fixed', //change for scrolled dialog. by catch 2015-06
                     // When updateZIndexOnOpen is set to true, we avoid computing the z-index on initialization,
                     // because the value would be replaced when opening the modal.
                     'z-index': (o.updateZIndexOnOpen ? 0 : o.zIndex() + 1),
