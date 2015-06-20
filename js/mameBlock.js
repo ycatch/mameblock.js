@@ -82,14 +82,11 @@
 		
 		$('#toolbox .accordion').click(function(e){
 			var this_accordion = this;
-			$(this_accordion)
-				.toggleClass('open');
+			$(this).toggleClass('open');
 				
-			$(this_accordion)
-				.next().slideToggle("fast")
+			$(this).next().slideToggle('normal')
 				.siblings('div:visible').slideUp('fast')
 				.prev('h4').removeClass('open');
-
 		});	
 	}
   
