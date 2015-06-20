@@ -95,7 +95,7 @@
 	};
 	
 	/** Serialize and transfer from blocks to code.  =============
-	*/
+	 */
 	soramame.getCodeBlock = function() {
 		var data = $(soramame.buffer).find('.serialize .code-body').text().replace(/\t+\n/g, "");
 		data = js_beautify(data.replace(/\t+-+/g, "\n"));
@@ -103,12 +103,12 @@
 	};
 	
 	soramame.copyCodeBlock = function(code_area) {
-		$("#mame_template").html(soramame.buffer);
+		$(code_area).html(soramame.buffer);
 		soramame.blockInit();
 	};
 	
-	soramame.reloadCodeBlock = function() {
-		soramame.buffer = $("#loading_area").html();
+	soramame.reloadCodeBlock = function(code_area) {
+		soramame.buffer = $(code_area).html();
 	};
 
 	/** add Single Global var. */

@@ -83,7 +83,7 @@
 		
 		$('#editor_close').click(function(e){
 			$('#modal-window').trigger('closeModal');
-			MAME_BLOCK.reloadCodeBlock();
+			MAME_BLOCK.reloadCodeBlock('#loading_area');
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 			e.preventDefault();
 		});
