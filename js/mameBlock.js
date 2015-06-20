@@ -81,8 +81,15 @@
 		$('.accordion_part.open').show();
 		
 		$('#toolbox .accordion').click(function(e){
-			$(this).next().slideToggle("fast");
-			$(this).toggleClass("open");
+			var this_accordion = this;
+			$(this_accordion)
+				.toggleClass('open');
+				
+			$(this_accordion)
+				.next().slideToggle("fast")
+				.siblings('div:visible').slideUp('fast')
+				.prev('h4').removeClass('open');
+
 		});	
 	}
   
