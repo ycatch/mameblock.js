@@ -1,4 +1,5 @@
-/*jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
+/* JS Beautifier */
+/* jshint curly:true, eqeqeq:true, laxbreak:true, noempty:false */
 /*
 
   The MIT License (MIT)
@@ -27,8 +28,7 @@
 
  JS Beautifier
 ---------------
-
-
+ 
   Written by Einar Lielmanis, <einar@jsbeautifier.org>
       http://jsbeautifier.org/
 
