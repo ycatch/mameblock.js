@@ -3,14 +3,14 @@
 mameblock.js is very simple Javascript library for visual code editing.
 
 - This is another Block-type code editor other than Scratch / Blockly.
-- You can use HTML files of Web page and apps include your own visual code editor.
-- Very simple. I wrote just only 100 lines Javascript code with some library.
+- You can use your own visual code editor with HTML files of Web page and apps.
+- Very simple. just only 100 lines Javascript code with some library.
 - Using **jquery-sortable** for nested sortable created by Jonas von Andrian. **jquery-sortable** is another jQuery plugin not jQuery-UI sortable.
 
 
 ## License
 
-Copyright 2014-2015 Yutaka Kachi released under MIT License.
+Copyright 2015 Yutaka Kachi released under MIT License.
 
 see LICENSE file or http://opensource.org/licenses/MIT
 
