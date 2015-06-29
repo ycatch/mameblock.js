@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>MameBlock.js - Javascript library for visual code editing.</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/mameblock.min.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/highlight_default.css" media="all" />
+	
+</head>
+<body>
+	<nav class="navbar">
+		<ul>
+			<li><a href="#"><span>MameBlock.js</span></a></li>
+			<li><a href="#">English</a></li>
+			<li><a href="index.ja.html">日本語</a></li>
+		</ul>
+	</nav>
+	<div class="grid">
+		<div class="col_12" style="margin-top:60px;">
+			<h1>MameBlock.js</h1>
+		</div>
+		<div class="col_6">
+			<p>Simple visual code editing library.</p>
+			<ul>
+				<li>Simple: just only 100 lines Javascript code with some library.</li>
+				<li>Embedded : You can use your own visual code editor with Web page and apps.</li>
+				<li>OpenSource : released under the MIT License.</li>
+			</ul>
+			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
+		</div>
+		<div class="col_6">
+			<img class="caption" src="docs/screenshot.png" />
+		</div>
+		<div class="col_12">
+			<h3>Demo</h3>
+			<ul class="button-bar">
+				<li><a class="first" id="mameEdit" href="#modal-window">Edit</a></li>
+				<li><a class="last" id="mameRun" href="#">Run</a></li>
+			</ul>
+			<p></p>
+			<pre id="exampleArea"></pre>
+		</div>
+<!-- 		<div class="col_12">
+			<h3>Example</h3>
+			<ul>
+				<li><a href='http://ycatch.github.io/mameblock.js/fizzbuzz.html'>FizzBuzz Question</a></li>
+			</ul>
+		</div> -->
+<!-- 		<div class="col_12">
+			<h3>Getting Started</h3>
+		</div> -->
+		<div class="col_12" id="footer">
+			Copyright 2015 Yutaka Kachi All Rights Reserved.
+		</div>
+	</div> <!-- End Grid -->
+
+	<div id="modal-express">
+		<div class="modal-body">
+			<label for="expModalText">Edit expression</label><br />
+			<input id="expModalText" type="text" />
+		</div>
+		<a class="modal_close" href="#">[OK]</a>
+    </div>
+
+    <div id="modal-window">
+		<a id="editor_close" href="#">[OK]</a>
+		<div id="loading_area">Edit Area:</div>
+    </div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/mameblock.min.js"></script>
+	<script type="text/javascript" src="js/highlight.pack.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		<!-- # Init -->
+		var codeArea = $("#exampleArea");
+		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+		/* wait for DOM building */
+		var wait0 = setTimeout(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		}, 500);
+		
+		<!-- # Edit -->
+		$("#modal-window").mameModal({
+			closeOnEscape: false
+		});
+
+		$('#mameEdit').click(function(e){
+			MAME_BLOCK.copyCodeBlock("#mame_template");
+			$('#modal-window').trigger('openModal');
+			e.preventDefault();
+		});
+		
+		$('#editor_close').click(function(e){
+			$('#modal-window').trigger('closeModal');
+			MAME_BLOCK.reloadCodeBlock('#loading_area');
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+			e.preventDefault();
+		});
+			
+		<!-- # Run -->
+		$("#mameRun").click(function() {
+			<!-- get code -->
+			var codeText = MAME_BLOCK.getCodeBlock();
+			setCode(codeText, codeArea);
+			var mameExec = new Function(codeText);
+			mameExec();
+		});
+		
+		<!-- ## set code and syntax highlight -->
+		function setCode(code, codeArea) {
+			codeArea.text(code);
+			codeArea.each(function(i, block) {
+				hljs.highlightBlock(block);
+			});
+		};
+
+	});
+
+	</script>
+
+</body>
+</html>
