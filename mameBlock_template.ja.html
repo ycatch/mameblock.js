@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>Mame Block template - Javascript template for visual code editting.</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/mameblock.min.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/fonts/font-awesome.min.css" media="all" />
+	
+</head>
+<body>
+	<div id="mame_body">
+	<div class="grid" id="mame_template">
+		<!-- start of side-toolbox -->
+		<div class="col_2" id="toolbox">
+			<h4 class="accordion h_icon open">きほん</h4>
+			<div class="accordion_part open">
+				<ol class="pallet-code block connect-area accordion_ol">
+					<li class="basic-block">
+						<div class="block-body">
+							alert(<span class="exp-body item1"></span>);
+						</div>
+						<div class="code-body">
+							alert(<span class="exp-body item1"></span>);
+						</div>
+					</li>
+					<li class="basic-block">
+						<div class="block-body">
+							var <span class="exp-body item1">input</span> = prompt(<span class="exp-body item2"></span>);
+						</div>
+						<div class="code-body">
+							var <span class="exp-body item1">input</span> = prompt(<span class="exp-body item2"></span>);
+						</div>
+					</li>
+					<li class="basic-block">
+						<div class="block-body">
+							var <span class="exp-body item1">flag</span> = confirm(<span class="exp-body item2"></span>);
+						</div>
+						<div class="code-body">
+							var <span class="exp-body item1">flag</span> = confirm(<span class="exp-body item2"></span>);
+						</div>
+					</li>
+					<li class="comment-block">
+						<div class="block-body">
+							/** <span class="exp-body item1">comment</span> */
+						</div>
+						<div class="code-body">
+							/** <span class="exp-body item1">comment</span> */
+						</div>
+					</li>
+				</ol>
+			</div>
+			<!-- start panel -->
+				<h4 class="accordion h_icon">もしも</h4>
+			<div class="accordion_part">
+				<ol class="pallet-code block connect-area accordion_ol">
+					<li class="if-block">
+						<div class="block-body">
+							if(<span class="exp-body item1"></span>) {
+						</div>
+						<div class="code-body">
+							if(<span class="exp-body item1"></span>) {
+						</div>
+						<ol>
+							<li class="comment-block">
+								<div class="block-body">
+									/** <span class="exp-body item1">comment</span></span> */
+								</div>
+								<div class="code-body">
+									/** <span class="exp-body item1">comment</span></span> */
+								</div>
+							</li>
+						</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="if-block">
+						<div class="block-body">
+							else if(<span class="exp-body item1"></span>) {
+						</div>
+						<div class="code-body">
+							else if(<span class="exp-body item1"></span>) {
+						</div>
+						<ol>
+							<li class="comment-block">
+								<div class="block-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+								<div class="code-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+							</li>
+						</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="if-block">
+						<div class="block-body">
+							else {
+						</div>
+						<div class="code-body">
+							else {
+						</div>
+						<ol>
+							<li class="comment-block">
+								<div class="block-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+								<div class="code-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+							</li>
+						</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+				</ol>
+			</div>
+			<!-- end panel -->
+			<!-- start panel -->
+			<h4 class="accordion h_icon">くりかえし</h4>
+			<div class="accordion_part">
+				<ol class="pallet-code block connect-area accordion_ol">
+					<li class="loop-block">
+						<div class="block-body">
+							while(<span class="exp-body item1"></span>) {
+						</div>
+						<div class="code-body">
+							while(<span class="exp-body item1"></span>) {
+						</div>
+						<ol>
+							<li class="comment-block">
+								<div class="block-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+								<div class="code-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+							</li>
+						</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="loop-block">
+						<div class="block-body">
+							for(<span class="exp-body item1"></span>) {
+						</div>
+						<div class="code-body">
+							for(<span class="exp-body item1"></span>) {
+						</div>
+						<ol>
+							<li class="comment-block">
+								<div class="block-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+								<div class="code-body">
+									/** <span class="exp-body item1">comment</span> */
+								</div>
+							</li>
+						</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+				</ol>
+			</div>
+			<!-- end panel -->
+			<!-- start panel -->
+			<h4 class="accordion h_icon">へんすう</h4>
+			<div class="accordion_part">
+				<ol class="pallet-code block connect-area accordion_ol">
+					<li class="var-block">
+						<div class="block-body">
+							var <span class="exp-body item1">i = i + 1</span>;
+						</div>
+						<div class="code-body">
+							var <span class="exp-body item1">i = i + 1</span>;
+						</div>
+					</li>
+					<li class="var-block">
+						<div class="block-body">
+							<span class="exp-body item1">i = i + 1</span>;
+						</div>
+						<div class="code-body">
+							<span class="exp-body item1">i = i + 1</span>;
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!-- end of side-toolbox -->
+
+		<!-- Main edit area -->
+		<div class="col_9">
+			<ol class="block connect-area serialize">
+				<li class="var-block">
+					<div class="block-body">
+						var <span class="exp-body item1">msg = "こんにちは:" + name + "\n"</span>;
+					</div>
+					<div class="code-body">
+						var <span class="exp-body item1">msg = "こんにちは:" + name + "\n"</span>;
+					</div>
+				</li>
+				<li class="var-block">
+					<div class="block-body">
+						var <span class="exp-body item1">i = 1</span>;
+					</div>
+					<div class="code-body">
+						var <span class="exp-body item1">i = 1</span>;
+					</div>
+				</li>
+				<li class="loop-block">
+					<div class="block-body">
+						while(<span class="exp-body item1">i <= 15</span>) {
+					</div>
+					<div class="code-body">
+						while(<span class="exp-body item1">i <= 15</span>) {
+					</div>
+					<ol>
+					<li class="if-block">
+						<div class="block-body">
+							if(<span class="exp-body item1">(i % 3 === 0) && (i % 5 === 0)</span>) {
+						</div>
+						<div class="code-body">
+							if(<span class="exp-body item1">(i % 3 === 0) && (i % 5 === 0)</span>) {
+						</div>
+							<ol>
+							<li class="var-block">
+								<div class="block-body">
+									<span class="exp-body item1">msg = msg + i + ": FizzBuzz\n"</span>;
+								</div>
+								<div class="code-body">
+									<span class="exp-body item1">msg = msg + i + ": FizzBuzz\n"</span>;
+								</div>
+							</li>
+							</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="if-block">
+						<div class="block-body">
+							else if(<span class="exp-body item1">(i % 3 === 0)</span>) {
+						</div>
+						<div class="code-body">
+							else if(<span class="exp-body item1">(i % 3 === 0)</span>) {
+						</div>
+							<ol>
+							<li class="var-block">
+								<div class="block-body">
+									<span class="exp-body item1">msg = msg + i + ": Fizz\n"</span>;
+								</div>
+								<div class="code-body">
+									<span class="exp-body item1">msg = msg + i + ": Fizz\n"</span>;
+								</div>
+							</li>
+							</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="if-block">
+						<div class="block-body">
+							else if(<span class="exp-body item1">(i % 5 === 0)</span>) {
+						</div>
+						<div class="code-body">
+							else if(<span class="exp-body item1">(i % 5 === 0)</span>) {
+						</div>
+							<ol>
+							<li class="var-block">
+								<div class="block-body">
+									<span class="exp-body item1">msg = msg + i + ": Buzz\n"</span>;
+								</div>
+								<div class="code-body">
+									<span class="exp-body item1">msg = msg + i + ": Buzz\n"</span>;
+								</div>
+							</li>
+							</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="if-block">
+						<div class="block-body">
+							else {
+						</div>
+						<div class="code-body">
+							else {
+						</div>
+							<ol>
+							<li class="var-block">
+								<div class="block-body">
+									<span class="exp-body item1">msg = msg + i + "\n"</span>;
+								</div>
+								<div class="code-body">
+									<span class="exp-body item1">msg = msg + i + "\n"</span>;
+								</div>
+							</li>
+							</ol>
+						<div class="block-body">
+							}
+						</div>
+						<div class="code-body">
+							}
+						</div>
+					</li>
+					<li class="var-block">
+						<div class="block-body">
+							var <span class="exp-body item1">i = i + 1</span>;
+						</div>
+						<div class="code-body">
+							var <span class="exp-body item1">i = i + 1</span>;
+						</div>
+					</li>
+					</ol>
+					<div class="block-body">
+						}
+					</div>
+					<div class="code-body">
+						}
+					</div>
+				</li>
+				<li class="basic-block">
+					<div class="block-body">
+						alert(<span class="exp-body item1">msg</span>);
+					</div>
+					<div class="code-body">
+						alert(<span class="exp-body item1">msg</span>);
+					</div>
+				</li>
+			</ol>
+		</div>
+		<!-- end of Main edit area -->
+
+		<!-- trash-can -->
+		<div class="col_1">
+			<a class="trash" href="#" ondblclick="MAME_BLOCK.clearTrash()" alt="trash"></a>
+			<ol id="trash-can" class="trash-code block connect-area"></ol>
+		</div>
+		<!-- end of trash-can -->
+
+	</div> <!-- End of editArea -->
+	</div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-sortable.js"></script>
+	<script type="text/javascript" src="js/mameBlock.js"></script>
+	<script type="text/javascript">
+		MAME_BLOCK.blockInit();
+	</script>
+
+</body>
+</html>
