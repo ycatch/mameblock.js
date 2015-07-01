@@ -52,7 +52,9 @@
 
 		/** Open express editor */
 		$('span.exp-body').click(function(){
-			$('#modal-express').trigger('openModal');
+			$('#modal-express')
+				.trigger('openModal')
+				.css("top", $(window).scrollTop() + 100);
 			expDialog_hundle = $(this);
 			openExpDialog(expDialog_hundle.text());
 			e.preventDefault();
@@ -61,7 +63,7 @@
 		/** Close express editor */
 		$('.modal_close').click(function(e){
 			$('#modal-express').trigger('closeModal');
-			
+
 			var strTextBox = $('#expModalText').val();
 			expDialog_hundle.text(strTextBox);
 			var itemName = expDialog_hundle.attr('class').split(" ")[1];

@@ -2721,7 +2721,7 @@
                     // because the value would be replaced when opening the modal.
                     'z-index': (o.updateZIndexOnOpen ? 0 : o.zIndex() + 1),
                     'left' : parseInt(o.left, 10) > -1 ? o.left + 'px' : 50 + '%',
-                    'top' : parseInt(o.top, 10) > -1 ? o.top + 'px' : 50 + '%'
+                    //'top' : parseInt(o.top, 10) > -1 ? o.top + 'px' : 50 + '%'
                 });
 
                 $modal.bind('openModal', function () {
@@ -2782,7 +2782,7 @@
                     if (o.hasVariableWidth) {
                         $modal.css({
                             'margin-left' : (parseInt(o.left, 10) > -1 ? 0 : -($modal.outerWidth() / 2)) + 'px',
-                            //'margin-top' : (parseInt(o.top, 10) > -1 ? 0 : -($modal.outerHeight() / 2)) + 'px'
+                            //'margin-top' : (parseInt(o.top, 10) > -1 ? 0 : -($modal.outerHeight() / 2)) + 'px' //coment out for scrolled. by catch 2015-07
                         });
                     }
                 });
@@ -3299,7 +3299,9 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 
 		/** Open express editor */
 		$('span.exp-body').click(function(){
-			$('#modal-express').trigger('openModal');
+			$('#modal-express')
+				.trigger('openModal')
+				.css("top", $(window).scrollTop() + 100);
 			expDialog_hundle = $(this);
 			openExpDialog(expDialog_hundle.text());
 			e.preventDefault();
@@ -3308,7 +3310,7 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 		/** Close express editor */
 		$('.modal_close').click(function(e){
 			$('#modal-express').trigger('closeModal');
-			
+
 			var strTextBox = $('#expModalText').val();
 			expDialog_hundle.text(strTextBox);
 			var itemName = expDialog_hundle.attr('class').split(" ")[1];
