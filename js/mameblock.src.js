@@ -2735,7 +2735,7 @@
                         'display' : 'block',
                         'margin-left' : (parseInt(o.left, 10) > -1 ? 0 : -($modal.outerWidth() / 2)) + 'px',
                         'margin-top' : (parseInt(o.top, 10) > -1 ? 0 : -($modal.outerHeight() / 2)) + 'px',
-                        'z-index': modalZ
+                        'z-index': modalZ,
                     });
 
                     $overlay.css({'z-index': overlayZ, 'display': 'block'});
@@ -2782,7 +2782,7 @@
                     if (o.hasVariableWidth) {
                         $modal.css({
                             'margin-left' : (parseInt(o.left, 10) > -1 ? 0 : -($modal.outerWidth() / 2)) + 'px',
-                            'margin-top' : (parseInt(o.top, 10) > -1 ? 0 : -($modal.outerHeight() / 2)) + 'px'
+                            //'margin-top' : (parseInt(o.top, 10) > -1 ? 0 : -($modal.outerHeight() / 2)) + 'px'
                         });
                     }
                 });

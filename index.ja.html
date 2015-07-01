@@ -93,7 +93,9 @@
 
 		$('#mameEdit').click(function(e){
 			MAME_BLOCK.copyCodeBlock("#mame_template");
-			$('#modal-window').trigger('openModal');
+			$('#modal-window')
+				.trigger('openModal')
+				.css("top", $(window).scrollTop() + 10);
 			e.preventDefault();
 		});
 		
