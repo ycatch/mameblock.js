@@ -65,13 +65,20 @@
 		<hr />
 		<div class="col_12">	
 			<h3>導入する</h3>
-			<p>あなた自身のHTMLファイルに次の内容(css、HTML、Javascript)を設定する。</p>
+			<p>各種ファイルをコピーしたら、あなた自身のHTMLファイルに次の内容(css、HTML、Javascript)を設定する。</p>
 			
-			<h4>1.CSS</h4>
+			<h4>1.Files</h4>
+			<p>次のファイルとフォルダをコピーする</p>
+			<ul>
+				<li>css</li>
+				<li>js</li>
+				<li>mameBlock_template.ja.html</li>
+			</ul>
+			<h4>2.CSS</h4>
 			<p>スタイルシートを指定する</p>
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
 			
-			<h4>2.HTML</h4>
+			<h4>3.HTML</h4>
 			<p>編集ダイアログを呼び出すボタンを設置</p>
 			<pre>&lt;a id=&quot;mameEdit&quot; href=&quot;#&quot;&gt;Edit&lt;/a&gt;</pre>
 			
@@ -91,7 +98,7 @@
 &lt;/div&gt;
 			</pre>
 			
-			<h4>3.Javascript</h4>
+			<h4>4.Javascript</h4>
 			<p>jqueryとライブラリを読み込む</p>
 			<pre>&lt;!-- Javascript --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
@@ -132,7 +139,7 @@ $(function() {
 });
 &lt;/script&gt;
 			</pre>
-			<h4>4.その他</h4>
+			<h4>5.その他</h4>
 			<p>編集したコードのハイライト表示と実行には、好みのスクリプトを使用する。サンプルでは、highlight.jsと、Functionクラスを使っている。</p>
 		</div>
 		<hr />
