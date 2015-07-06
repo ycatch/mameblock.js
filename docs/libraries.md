@@ -24,7 +24,7 @@ MIT license
 
 ## jquery-sortable
 
-v0.9.4
+v0.9.13
 
 This is nested sortable, most important parts MameBlock and Soramame.Block.
 
