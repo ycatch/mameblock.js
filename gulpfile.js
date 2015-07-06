@@ -1,4 +1,5 @@
-// 2015.06.25 Yutaka Kachi
+// 2015.07.06 Yutaka Kachi
+// npm install gulp
 // npm install --save-dev gulp-concat gulp-uglify gulp-cssmin
 
 var gulp = require('gulp');

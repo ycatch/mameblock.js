@@ -104,7 +104,7 @@
                     // because the value would be replaced when opening the modal.
                     'z-index': (o.updateZIndexOnOpen ? 0 : o.zIndex() + 1),
                     'left' : parseInt(o.left, 10) > -1 ? o.left + 'px' : 50 + '%',
-                    //'top' : parseInt(o.top, 10) > -1 ? o.top + 'px' : 50 + '%'
+                    'top' : parseInt(o.top, 10) > -1 ? o.top + 'px' : 50 + '%'
                 });
 
                 $modal.bind('openModal', function () {

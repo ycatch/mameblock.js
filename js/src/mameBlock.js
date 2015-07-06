@@ -28,13 +28,13 @@
 		$('ol.pallet-code').sortable({
 			group: 'connect-area',
 			drop: false,
-			onDragStart: function (item, container, _super) {
+			onDragStart: function ($item, container, _super) { //2015.07.06 update for jquery sortable v0.9.13
 				// Duplicate items of the no drop area
 				if(!container.options.drop) {
-					item.clone(true).insertAfter(item)
+					$item.clone().insertAfter($item);
 				}
-				_super(item);
-			},
+				_super($item, container);
+			}
 		});
 
 		$('ol.block').sortable({
