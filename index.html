@@ -32,7 +32,7 @@
 				<li>Embedded : You can use your own visual code editor with Web page and apps.</li>
 				<li>OpenSource : released under the MIT License.</li>
 			</ul>
-			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.2.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.2)</a></p>
+			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.3.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.3)</a></p>
 			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
 		</div>
 		<div class="col_6">
@@ -56,7 +56,7 @@
 			
 			<h4>1.Download</h4>
 			<p>Download and extract.</p>
-			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.2.zip"><i class="fa fa-download"></i> Download</a>
+			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.3.zip"><i class="fa fa-download"></i> Download</a>
 			
 			<h4>2.Open files</h4>
 			<p>Open index.html to same this page.</p>
@@ -166,6 +166,7 @@ $(function() {
 			<hr />
 			<h3>News</h3>
 			<ul>
+				<li>2015.07.08 : Beta release ver.0.1.3</li>
 				<li>2015.07.07 : Beta release ver.0.1.2</li>
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
@@ -190,7 +191,7 @@ $(function() {
     </div>
 
     <div id="modal-window">
-		<a id="editor_close" href="#">[OK]</a>
+		<a id="editor_close" href="#">[Close]</a>
 		<div id="loading_area">Edit Area:</div>
     </div>
 
@@ -210,11 +211,12 @@ $(function() {
 		
 		<!-- # Edit -->
 		$("#modal-window").mameModal({
+			overlayClose: false,
 			closeOnEscape: false
 		});
 
 		$('#mameEdit').click(function(e){
-			MAME_BLOCK.copyCodeBlock("#mame_template");
+			<!-- MAME_BLOCK.copyCodeBlock('#loading_area'); -->
 			$('#modal-window')
 				.trigger('openModal')
 				.css("top", $(window).scrollTop() + 10);

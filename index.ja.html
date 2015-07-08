@@ -32,7 +32,7 @@
 				<li>埋め込み : Webページやアプリに、あなた独自のビジュアルコードエディタを埋め込み。</li>
 				<li>オープンソース : MITライセンスで提供。</li>
 			</ul>
-			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.2.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.2)</a></p>
+			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.3.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.3)</a></p>
 			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
 		</div>
 		<div class="col_6">
@@ -56,7 +56,7 @@
 			
 			<h4>1.ダウンロード</h4>
 			<p>次のファイルをダウンロードし、解凍する</p>
-			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.2.zip"><i class="fa fa-download"></i> Download</a>
+			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.3.zip"><i class="fa fa-download"></i> Download</a>
 			
 			<h4>2.ファイルを開く</h4>
 			<p>index.ja.htmlファイルを開くと、これと同じページが表示される。</p>
@@ -192,7 +192,7 @@ $(function() {
 			<label for="expModalText">Edit expression</label><br />
 			<input id="expModalText" type="text" />
 		</div>
-		<a class="modal_close" href="#">[OK]</a>
+		<a class="modal_close" href="#">[Close]</a>
 	</div>
 
 	<!-- Javascript -->
@@ -211,11 +211,12 @@ $(function() {
 		
 		<!-- # Edit -->
 		$("#modal-window").mameModal({
+			overlayClose: false,
 			closeOnEscape: false
 		});
 
 		$('#mameEdit').click(function(e){
-			MAME_BLOCK.copyCodeBlock("#mame_template");
+			<!-- MAME_BLOCK.copyCodeBlock("#mame_template"); -->
 			$('#modal-window')
 				.trigger('openModal')
 				.css("top", $(window).scrollTop() + 10);
