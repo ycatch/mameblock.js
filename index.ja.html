@@ -106,39 +106,58 @@
 			</pre>
 			
 			<p>制御スクリプトを読み込む</p>
-			<pre>&lt;script type=&quot;text/javascript&quot;&gt;
-$(function() {
-    &lt;!-- # Init --&gt;
-    var codeArea = $(&quot;#exampleArea&quot;);
-    var codeText = MAME_BLOCK.init(&quot;#loading_area&quot;, &quot;mameBlock_template.ja.html #mame_template&quot;);
-    /* wait for DOM building */
-    var wait0 = setTimeout(function() {
-        setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-    }, 500);
-    
-    &lt;!-- # Edit --&gt;
-    $(&quot;#modal-window&quot;).mameModal({
-        closeOnEscape: false
-    });
+			<pre>
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    $(function() {
+        &lt;!-- # Init --&gt;
+        var codeArea = $(&quot;#exampleArea&quot;);
+        var codeText = MAME_BLOCK.init(&quot;#loading_area&quot;, &quot;mameBlock_template.ja.html&quot;);
+        /* wait for DOM building */
+        var wait0 = setTimeout(function() {
+            setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+        }, 500);
+        
+        &lt;!-- # Edit --&gt;
+        $(&quot;#modal-window&quot;).mameModal({
+            overlayClose: false,
+            closeOnEscape: false
+        });
 
-    $(&#039;#mameEdit&#039;).click(function(e){
-        MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
-        $(&#039;#modal-window&#039;)
-            .trigger(&#039;openModal&#039;)
-            .css(&quot;top&quot;, $(window).scrollTop() + 10);
-        e.preventDefault();
-    });
-    
-    $(&#039;#editor_close&#039;).click(function(e){
-        $(&#039;#modal-window&#039;).trigger(&#039;closeModal&#039;);
-        MAME_BLOCK.reloadCodeBlock(&#039;#loading_area&#039;);
-        setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-        e.preventDefault();
-    });
+        $(&#039;#mameEdit&#039;).click(function(e){
+            &lt;!-- MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;); --&gt;
+            $(&#039;#modal-window&#039;)
+                .trigger(&#039;openModal&#039;)
+                .css(&quot;top&quot;, $(window).scrollTop() + 10);
+            e.preventDefault();
+        });
+        
+        $(&#039;#editor_close&#039;).click(function(e){
+            $(&#039;#modal-window&#039;).trigger(&#039;closeModal&#039;);
+            MAME_BLOCK.reloadCodeBlock(&#039;#loading_area&#039;);
+            setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+            e.preventDefault();
+        });
+            
+        &lt;!-- # Run --&gt;
+        $(&quot;#mameRun&quot;).click(function() {
+            &lt;!-- get code --&gt;
+            var codeText = MAME_BLOCK.getCodeBlock();
+            setCode(codeText, codeArea);
+            var mameExec = new Function(codeText);
+            mameExec();
+        });
+        
+        &lt;!-- ## set code and syntax highlight --&gt;
+        function setCode(code, codeArea) {
+            codeArea.text(code);
+            codeArea.each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        };
 
-});
-&lt;/script&gt;
-			</pre>
+    });
+    &lt;/script&gt;
+</pre>
 			<h4>5.その他</h4>
 			<p>編集したコードのハイライト表示と実行には、好みのスクリプトを使用する。サンプルでは、highlight.jsと、Functionクラスを使っている。</p>
 		</div>
@@ -166,6 +185,7 @@ $(function() {
 			<hr />
 			<h3>News</h3>
 			<ul>
+				<li>2015.07.08 : Beta release ver.0.1.3</li>
 				<li>2015.07.07 : Beta release ver.0.1.2</li>
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
@@ -183,7 +203,7 @@ $(function() {
 
 	<!-- edit dialog -->
     <div id="modal-window">
-		<a id="editor_close" href="#">[OK]</a>
+		<a id="editor_close" href="#">[Close]</a>
 		<div id="loading_area"></div>
     </div>
 	<!-- express dialog -->
@@ -192,7 +212,7 @@ $(function() {
 			<label for="expModalText">Edit expression</label><br />
 			<input id="expModalText" type="text" />
 		</div>
-		<a class="modal_close" href="#">[Close]</a>
+		<a class="modal_close" href="#">[OK]</a>
 	</div>
 
 	<!-- Javascript -->
