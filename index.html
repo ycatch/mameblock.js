@@ -106,38 +106,58 @@
 			</pre>
 			
 			<p>Load control script.</p>
-			<pre>&lt;script type=&quot;text/javascript&quot;&gt;
-$(function() {
-    &lt;!-- # Init --&gt;
-    var codeArea = $(&quot;#exampleArea&quot;);
-    var codeText = MAME_BLOCK.init(&quot;#loading_area&quot;, &quot;mameBlock_template.html #mame_template&quot;);
-    /* wait for DOM building */
-    var wait0 = setTimeout(function() {
-        setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-    }, 500);
-    
-    &lt;!-- # Edit --&gt;
-    $(&quot;#modal-window&quot;).mameModal({
-        closeOnEscape: false
+			<pre><div class="sourceview">
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    $(function() {
+        &lt;!-- # Init --&gt;
+        var codeArea = $(&quot;#exampleArea&quot;);
+        var codeText = MAME_BLOCK.init(&quot;#loading_area&quot;, &quot;mameBlock_template.html&quot;);
+        /* wait for DOM building */
+        var wait0 = setTimeout(function() {
+            setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+        }, 500);
+        
+        &lt;!-- # Edit --&gt;
+        $(&quot;#modal-window&quot;).mameModal({
+            overlayClose: false,
+            closeOnEscape: false
+        });
+
+        $(&#039;#mameEdit&#039;).click(function(e){
+            &lt;!-- MAME_BLOCK.copyCodeBlock(&#039;#loading_area&#039;); --&gt;
+            $(&#039;#modal-window&#039;)
+                .trigger(&#039;openModal&#039;)
+                .css(&quot;top&quot;, $(window).scrollTop() + 10);
+            e.preventDefault();
+        });
+        
+        $(&#039;#editor_close&#039;).click(function(e){
+            $(&#039;#modal-window&#039;).trigger(&#039;closeModal&#039;);
+            MAME_BLOCK.reloadCodeBlock(&#039;#loading_area&#039;);
+            setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+            e.preventDefault();
+        });
+            
+        &lt;!-- # Run --&gt;
+        $(&quot;#mameRun&quot;).click(function() {
+            &lt;!-- get code --&gt;
+            var codeText = MAME_BLOCK.getCodeBlock();
+            setCode(codeText, codeArea);
+            var mameExec = new Function(codeText);
+            mameExec();
+        });
+        
+        &lt;!-- ## set code and syntax highlight --&gt;
+        function setCode(code, codeArea) {
+            codeArea.text(code);
+            codeArea.each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        };
+
     });
 
-    $(&#039;#mameEdit&#039;).click(function(e){
-        MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
-        $(&#039;#modal-window&#039;)
-            .trigger(&#039;openModal&#039;)
-            .css(&quot;top&quot;, $(window).scrollTop() + 10);
-        e.preventDefault();
-    });
-    
-    $(&#039;#editor_close&#039;).click(function(e){
-        $(&#039;#modal-window&#039;).trigger(&#039;closeModal&#039;);
-        MAME_BLOCK.reloadCodeBlock(&#039;#loading_area&#039;);
-        setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-        e.preventDefault();
-    });
-
-});
-&lt;/script&gt;
+    &lt;/script&gt;
 			</pre>
 			<h4>5.Misc</h4>
 			<p>You can use your favarite librarly for code-highlighter and excutting code. I use highlight.js and Function class.</p>
