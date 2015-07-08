@@ -45,7 +45,7 @@
     </div>
 
     <div id="modal-window">
-		<a id="editor_close" href="#">[OK]</a>
+		<a id="editor_close" href="#">[Close]</a>
 		<div id="loading_area">Edit Area:</div>
     </div>
 
@@ -65,11 +65,12 @@
 		
 		<!-- # Edit -->
 		$("#modal-window").mameModal({
+			overlayClose: false,
 			closeOnEscape: false
 		});
 
 		$('#mameEdit').click(function(e){
-			MAME_BLOCK.copyCodeBlock("#mame_template");
+			<!-- MAME_BLOCK.copyCodeBlock("#mame_template"); -->
 			$('#modal-window')
 				.trigger('openModal')
 				.css("top", $(window).scrollTop() + 10);

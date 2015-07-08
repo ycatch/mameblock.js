@@ -192,7 +192,7 @@ $(function() {
 			<label for="expModalText">Edit expression</label><br />
 			<input id="expModalText" type="text" />
 		</div>
-		<a class="modal_close" href="#">[OK]</a>
+		<a class="modal_close" href="#">[Close]</a>
 	</div>
 
 	<!-- Javascript -->
@@ -211,11 +211,12 @@ $(function() {
 		
 		<!-- # Edit -->
 		$("#modal-window").mameModal({
+			overlayClose: false,
 			closeOnEscape: false
 		});
 
 		$('#mameEdit').click(function(e){
-			MAME_BLOCK.copyCodeBlock("#mame_template");
+			<!-- MAME_BLOCK.copyCodeBlock("#mame_template"); -->
 			$('#modal-window')
 				.trigger('openModal')
 				.css("top", $(window).scrollTop() + 10);
