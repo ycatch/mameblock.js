@@ -190,9 +190,33 @@
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
 			<hr />
+			<h3>Tips</h3>
+			<p>If you need activate "cansel" for dialog, please change Javascript code in index.html or index.ja.html. However it is not working at Google Chrome.</p>
+			<pre>
+&lt;!-- # Edit --&gt;
+$(&quot;#modal-window&quot;).mameModal({
+	overlayClose: true,
+	closeOnEscape: true
+});
+
+$(&#039;#mameEdit&#039;).click(function(e){
+	MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
+	$(&#039;#modal-window&#039;)
+		.trigger(&#039;openModal&#039;)
+		.css(&quot;top&quot;, $(window).scrollTop() + 10);
+	e.preventDefault();
+});
+			</pre>
+			<hr />
 			<h3>Constraints</h3>
 			<ul>
 				<li>I will chahge some API.</li>
+			</ul>
+			<hr />
+			<h3>Relational Projects</h3>
+			<ul>
+				<li><a href="https://github.com/ycatch/SoraMame.Block/">SoraMame.Block</a></li>
+				<li><a href="http://johnny.github.io/jquery-sortable/">jquery-sortablek</a></li>
 			</ul>
 		</div>
 		

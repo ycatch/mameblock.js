@@ -1,6 +1,6 @@
 # mameblock.js
 
-mameblock.js is very simple Javascript library for visual code editing.
+mameblock.js is very simple Javascript library for visual programing editor.
 
 - This is another Block-type code editor other than Scratch / Blockly.
 - You can use your own visual code editor with HTML files of Web page and apps.
