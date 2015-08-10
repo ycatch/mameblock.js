@@ -44,8 +44,8 @@
 			<p>Click Run button to execute code.</p>
 			<p>Editor change thier code for folloing list and execution.</p>
 			<ul class="button-bar">
-				<li><a class="first" id="mameEdit" href="#modal-window">Edit</a></li>
-				<li><a class="last" id="mameRun" href="#">Run</a></li>
+				<li><a class="first" id="mameEdit" href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+				<li><a class="last" id="mameRun" href="#"><i class="fa fa-play"></i> Run</a></li>
 			</ul>
 			<p></p>
 			<pre id="exampleArea"></pre>
@@ -165,7 +165,7 @@
 		<div class="col_12">
 			<h3>Example</h3>
 			<ul>
-				<li><a href='fizzbuzz.html'>FizzBuzz Question</a></li>
+				<li><a href='example/simple/fizzbuzz.html'>FizzBuzz Question</a></li>
 			</ul>
 			<hr />
 			<h3>Development Guide</h3>
@@ -190,9 +190,33 @@
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
 			<hr />
+			<h3>Tips</h3>
+			<p>If you need activate "cansel" for dialog, please change Javascript code in index.html or index.ja.html. However it is not working at Google Chrome.</p>
+			<pre>
+&lt;!-- # Edit --&gt;
+$(&quot;#modal-window&quot;).mameModal({
+	overlayClose: true,
+	closeOnEscape: true
+});
+
+$(&#039;#mameEdit&#039;).click(function(e){
+	MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
+	$(&#039;#modal-window&#039;)
+		.trigger(&#039;openModal&#039;)
+		.css(&quot;top&quot;, $(window).scrollTop() + 10);
+	e.preventDefault();
+});
+			</pre>
+			<hr />
 			<h3>Constraints</h3>
 			<ul>
 				<li>I will chahge some API.</li>
+			</ul>
+			<hr />
+			<h3>Relational Projects</h3>
+			<ul>
+				<li><a href="https://github.com/ycatch/SoraMame.Block/">SoraMame.Block</a></li>
+				<li><a href="http://johnny.github.io/jquery-sortable/">jquery-sortablek</a></li>
 			</ul>
 		</div>
 		

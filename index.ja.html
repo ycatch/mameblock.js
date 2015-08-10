@@ -29,7 +29,7 @@
 			<p>シンプルなビジュアルコード編集ライブラリ</p>
 			<ul>
 				<li>シンプル: ほんの100行のJavascriptコードと、いくつかのライブラリで構成。</li>
-				<li>埋め込み : Webページやアプリに、あなた独自のビジュアルコードエディタを埋め込み。</li>
+				<li>埋め込み : Webページやアプリに、独自のビジュアルコードエディタを埋め込み。</li>
 				<li>オープンソース : MITライセンスで提供。</li>
 			</ul>
 			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.3.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.3)</a></p>
@@ -165,7 +165,7 @@
 		<div class="col_12">
 			<h3>サンプル</h3>
 			<ul>
-				<li><a href='fizzbuzz.ja.html'>FizzBuzz Question （日本語）</a></li>
+				<li><a href='example/simple/fizzbuzz.ja.html'>FizzBuzz Question （日本語）</a></li>
 			</ul>
 			<hr />
 			<h3>開発者ガイド</h3>
@@ -190,9 +190,33 @@
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
 			<hr />
+			<h3>Tips</h3>
+			<p>mameblockのダイアログで、「キャンセル」操作を有効にするには、index.htmlとindex.ja.htmlのjavascriptを次のように変更します。ただし、Google Chromeでは、動作しなくなる場合があります。</p>
+			<pre>
+&lt;!-- # Edit --&gt;
+$(&quot;#modal-window&quot;).mameModal({
+	overlayClose: true,
+	closeOnEscape: true
+});
+
+$(&#039;#mameEdit&#039;).click(function(e){
+	MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
+	$(&#039;#modal-window&#039;)
+		.trigger(&#039;openModal&#039;)
+		.css(&quot;top&quot;, $(window).scrollTop() + 10);
+	e.preventDefault();
+});
+			</pre>
+			<hr />
 			<h3>制限事項</h3>
 			<ul>
 				<li>今後、関数呼び出しなどのAPIを変更する可能性があります。</li>
+			</ul>
+			<hr />
+			<h3>関連情報</h3>
+			<ul>
+				<li><a href="https://github.com/ycatch/SoraMame.Block/">SoraMame.Block</a> ビジュアルプログラミング環境。いくつかサンプルがあります。</li>
+				<li><a href="http://johnny.github.io/jquery-sortable/">jquery-sortablek</a> ネストできるSortableプラグイン</li>
 			</ul>
 		</div>
 

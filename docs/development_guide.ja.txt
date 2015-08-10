@@ -1,9 +1,9 @@
 Mame Block Development Guide
 =================================
 
-MameBlockは、ビジュアルプログラミング言語を開発するときに利用できる、Webフロントエンドのモックアップです。
+MameBlockは、ビジュアルプログラミング言語を開発するときに利用できる、Webフロントエンドのライブラリである。
 
-このドキュメントでは、MameBlockを利用したWebアプリの開発者のために、内部構成を解説します。
+このドキュメントでは、MameBlockを利用したWebアプリの開発者のために、内部構成を解説する。
 
 
 
@@ -13,6 +13,7 @@ Description
 MameBlockは、100行ほどのJavascriptコードと、各種OSSライブラリで構成されている。
 ブロックのドラッグ＆ドロップには、jquery-sortableを使っている。
 jqueryプラグインであるjquery-sortableは、ネストした要素をドラッグ&ドロップできる。
+
 Webページのデザインと主なUIには、HTML Kickstarterを使っているが、ユーザーのHTMLでは独自のCSSツールキットを使用できる。
 
 
@@ -34,14 +35,22 @@ MameBlockは、次のようなファイル構成を持っている。
  | 
  +---css
  |   |
+ |   +--- mameblock.min.css
+ |   +--- mameblock.src.css
+ |   |
  |   +---fonts
  |   +---img
  |   +---src
  |
  \---js : JavaScript files
      |
+     +--- jquery-1.11.2.min.js
+     +--- mameblock.min.js
+     +--- mameblock.src.js
+     |
      +---src
 
+\css\srcフォルダのcssファイルと、\js\srcフォルダのJavascriptファイルは、gulpfile.jsによって、mameblock.*.cssとmameblock.*.jsに変換される。
 
 
 
@@ -51,20 +60,8 @@ Functions
 ここでは、MameBlockの主な機能とコードの対応について解説する。
 
 
-### Design and Functions
 
-
-ブロック内の式をクリックすると、数式エディタがポップアップ表示される。
-
-
-### Tabs
-
-最上部には、4つのタブを持つナビゲーションバーがある。
-各タブは、エリアを変更したり、コードを実行したりできる。
-タブ付きのナビゲーションバーには、ブートストラップを使用している。
-
-
-### Edit dialog
+### Edit Dialog
 
 コードを編集する画面は、ツールパレット・メイン編集・ゴミ箱という3つのエリアを持つ
 
@@ -76,7 +73,7 @@ Functions
 ブロックは、ツールパレットからメイン編集エリアにドラッグ＆ドロップできる。
 
 
-### Block
+### Blocks
 
 ブロックは、<li>タグで構成されており、jquery-sortableにより、ネストしたままドラッグ＆ドロップできる。
 この<li>タグによる要素は、ブロックとして表示するテキスト(class = "block-body")と、変換時にコードとして出力するテキスト(class = "code-body")を持っている。
@@ -102,7 +99,7 @@ class="exp-body"を持つ<span>要素のテキストは、数式エディタで�
 メイン編集エリアは、ブロックスタイルでコードを編集する画面である。
 
 コードを表すブロックをドラッグ＆ドロップで配置できる。
-ここに配置されたブロックがコードを持ち、"Code"タブをクリックすると、そのコードだけが表示される。
+ここに配置されたブロックがコードを持つ。
 
 
 ### Trash Can area
@@ -110,7 +107,7 @@ class="exp-body"を持つ<span>要素のテキストは、数式エディタで�
 メイン編集エリアにある不要なブロックは、ゴミ箱にドラッグ＆ドロップして捨てることができる。
 ゴミ箱に捨てたブロックは、ゴミ箱のすぐ下に表示される。
 再度、メイン編集エリアに移動できる。
-ゴミ箱をダブルクリックすると、捨てたブロックは完全に削除される。
+ゴミ箱をクリックすると、捨てたブロックは完全に削除される。
 
 
 
@@ -125,7 +122,8 @@ class="exp-body"を持つ<span>要素のテキストは、数式エディタで�
 API
 ---------
 
-### MAME_BLOCK.init("#loading_area", "mameBlock_template.html #mame_template");
+
+### MAME_BLOCK.init("#loading_area", "mameBlock_template.html");
 
 Editダイアログを初期化する
 
@@ -133,18 +131,25 @@ Editダイアログを初期化する
 
  mameBlock_template.html : Editダイアログに読み込むテンプレートファイルを指定
 
- #mame_template : テンプレートファイルの要素クラスを指定
-
-
-
-### MAME_BLOCK.clearTrash()
-
-ゴミ箱を空にする。
 
 
 ### MAME_BLOCK.getCodeBlock()
 
 ブロック編集エリアのコードを取得する。
 
+
+### MAME_BLOCK.copyCodeBlock('#loading_area');
+
+コードバッファーからダイアログにコードをコピーする
+
+ダイアログを開くときに使う。
+
+
+
+### MAME_BLOCK.reloadCodeBlock('#loading_area');
+
+ダイアログからコードバッファーにコードを再ロードする
+
+ダイアログを閉じるときに使う。
 
 
