@@ -20,7 +20,8 @@
 			<p>"p5.js is a JavaScript library that starts with the original goal of Processing, to make coding accessible for artists, designers, educators, and beginners, and reinterprets this for today's web." - <a href='http://p5js.org/' target='_blank'>p5.js</a></p>
 			<p>Notice: all commands and constants need "p."</p>
 		</div>
-		<div class="col_12">	
+		<div class="col_12">
+			<h2>Move your mouse pointer on this area.</h2>
 			<div id = "p5Canvas"></div>
 		</div>
 		<div class="col_12">			
@@ -74,6 +75,7 @@
 		/* wait for DOM building */
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+			execCode();
 		}, 500);
 		
 		<!-- # Edit -->
@@ -99,12 +101,24 @@
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
-			<!-- get code -->
+			execCode();
+		});
+		
+		<!-- # Stop -->
+		$("#mameStop").click(function() {
+			if (Pjs) {
+				Pjs.remove();
+			}
+		});
+		
+		function execCode() {
+			<!-- stop and clear -->
 			if (Pjs) {
 				Pjs.remove();
 				Pjs.noCanvas();
 			}
 
+			<!-- get code -->
 			var codeText = MAME_BLOCK.getCodeBlock();
 			setCode(codeText, codeArea);
 			try {
@@ -113,14 +127,7 @@
 			} catch(e) {
 				alert(e);
 			}
-		});
-		
-				<!-- # Stop -->
-		$("#mameStop").click(function() {
-			if (Pjs) {
-				Pjs.remove();
-			}
-		});
+		};
 		
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {

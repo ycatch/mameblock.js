@@ -18,10 +18,10 @@
 			<h1>p5.js 用 ビジュアルプログラミングエディタ</h1>
 			<p>これは、<a href='http://ycatch.github.io/mameblock.js/index.ja.html' target='_blank'>MameBlock.js</a>によるビジュアルプログラミングエディタのサンプルです。</p>
 			<p>p5.jsは、クリエイティブプログラミングのためのプログラミング言語 Processingと同じゴールを持ったJavaScriptライブラリです。アーティストやデザイナー/教育関係者/初学者に、手軽なコーディング方法を提供します。 - <a href='http://p5js.org/' target='_blank'>p5.js</a></p>
-			<p>まずは、「実行」ボタンをクリックしてみてください。</p>
 			<p>注意: すべてのコマンドと定数に"p."が必要です。</p>
 		</div>
-		<div class="col_12">	
+		<div class="col_12">
+			<h2>このエリアで、マウスを動かしてください</h2>
 			<div id = "p5Canvas"></div>
 		</div>
 		<div class="col_12">			
@@ -70,11 +70,13 @@
 		var Pjs;
 
 		<!-- # Init -->
+		
 		var codeArea = $("#exampleArea");
 		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.ja.html");
 		/* wait for DOM building */
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+			execCode();
 		}, 500);
 		
 		<!-- # Edit -->
@@ -100,20 +102,7 @@
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
-			<!-- get code -->
-			if (Pjs) {
-				Pjs.remove();
-				Pjs.noCanvas();
-			}
-
-			var codeText = MAME_BLOCK.getCodeBlock();
-			setCode(codeText, codeArea);
-			try {
-				var s = new Function("p", codeText);
-				Pjs = new p5(s, "p5Canvas");
-			} catch(e) {
-				alert(e);
-			}
+			execCode();
 		});
 		
 				<!-- # Stop -->
@@ -122,6 +111,24 @@
 				Pjs.remove();
 			}
 		});
+			
+		function execCode() {
+			<!-- stop and clear -->
+			if (Pjs) {
+				Pjs.remove();
+				Pjs.noCanvas();
+			}
+
+			<!-- get code -->
+			var codeText = MAME_BLOCK.getCodeBlock();
+			setCode(codeText, codeArea);
+			try {
+				var s = new Function("p", codeText);
+				Pjs = new p5(s, "p5Canvas");
+			} catch(e) {
+				alert(e);
+			}
+		};
 		
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
