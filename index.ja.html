@@ -47,12 +47,12 @@
 		<hr />
 		<div class="col_12">
 			<h3>デモ</h3>
-			<p>編集ボタンをクリックすると、ビジュアルコードエディタを表示する。</p>
-			<p>実行ボタンをクリックすると、コードを実行する。</p>
-			<p>編集結果は、次のリストと実行内容に反映される。</p>
+			<p>編集ボタンをクリックすると、ビジュアルコードエディタを表示します。</p>
+			<p>実行ボタンをクリックすると、コードを実行します。</p>
+			<p>編集結果は、以下のリストと実行内容に反映されます。</p>
 			<ul class="button-bar">
-				<li><a class="first" id="mameEdit" href="#"><i class="fa fa-pencil"></i> 編集</a></li>
-				<li><a class="last" id="mameRun" href="#"><i class="fa fa-play"></i> 実行</a></li>
+				<li><a class="first" id="mameEdit" href="javascript:void(0)"><i class="fa fa-pencil"></i> 編集</a></li>
+				<li><a class="last" id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> 実行</a></li>
 			</ul>
 			<p></p>
 			<pre id="exampleArea"></pre>
@@ -68,34 +68,35 @@
 			<h3>やってみる</h3>
 			
 			<h4>1.ダウンロード</h4>
-			<p>次のファイルをダウンロードし、解凍する</p>
+			<p>次のファイルをダウンロードし、解凍します</p>
 			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.4.zip"><i class="fa fa-download"></i> Download</a>
 			
 			<h4>2.ファイルを開く</h4>
-			<p>index.ja.htmlファイルを開くと、これと同じページが表示される。</p>
-			<p>ビジュアルコードエディタに表示される内容は、mameBlock_template.ja.htmlファイルを読み込んでいる。</p>
+			<p>index.ja.htmlファイルを開くと、これと同じページが表示されます。</p>
+			<p>ビジュアルコードエディタに表示される内容は、mameBlock_template.ja.htmlファイルを読み込んでいます。</p>
 		</div>
 		<hr />
 		<div class="col_12">	
 			<h3>導入する</h3>
-			<p>各種ファイルをコピーしたら、あなた自身のHTMLファイルに次の内容(css、HTML、Javascript)を設定する。</p>
+			<p>各種ファイルをコピーしたら、あなた自身のHTMLファイルに次の内容(css、HTML、Javascript)を設定します。</p>
 			
 			<h4>1.Files</h4>
-			<p>次のファイルとフォルダをコピーする</p>
+			<p>次のファイルとフォルダをコピーします。</p>
 			<ul>
 				<li>css</li>
 				<li>js</li>
 				<li>mameBlock_template.ja.html</li>
 			</ul>
 			<h4>2.CSS</h4>
-			<p>スタイルシートを指定する</p>
+			<p>スタイルシートを指定します。</p>
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
 			
 			<h4>3.HTML</h4>
-			<p>編集ダイアログを呼び出すボタンを設置</p>
-			<pre>&lt;a id=&quot;mameEdit&quot; href=&quot;#&quot;&gt;Edit&lt;/a&gt;</pre>
+			<p>編集および実行ボタンを設置します。</p>
+			<pre>&lt;a id=&quot;mameEdit&quot; href=&quot;javascript:void(0)&quot;&gt;Edit&lt;/a&gt;
+&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;</pre>
 			
-			<p>ダイアログの枠組みを設置</p>
+			<p>ダイアログの枠組みを設置します。</p>
 			<pre>&lt;!-- edit dialog --&gt;
 &lt;div id=&quot;modal-window&quot;&gt;
 	&lt;a id=&quot;editor_close&quot; href=&quot;#&quot;&gt;[OK]&lt;/a&gt;
@@ -112,13 +113,13 @@
 			</pre>
 			
 			<h4>4.Javascript</h4>
-			<p>jqueryとライブラリを読み込む</p>
+			<p>jqueryとライブラリを読み込みます。</p>
 			<pre>&lt;!-- Javascript --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/mameblock.min.js&quot;&gt;&lt;/script&gt;
 			</pre>
 			
-			<p>制御スクリプトを読み込む</p>
+			<p>制御スクリプトを読み込みます。</p>
 			<pre>
     &lt;script type=&quot;text/javascript&quot;&gt;
     $(function() {
@@ -172,7 +173,7 @@
     &lt;/script&gt;
 </pre>
 			<h4>5.その他</h4>
-			<p>編集したコードのハイライト表示と実行には、好みのスクリプトを使用する。サンプルでは、highlight.jsと、Functionクラスを使っている。</p>
+			<p>編集したコードのハイライト表示と実行には、好みのスクリプトを使用する。サンプルでは、highlight.jsと、Functionクラスを使っています。</p>
 		</div>
 		<hr />
 		<div class="col_12">
