@@ -30,11 +30,19 @@
 			</ul>
 		</div>
 		<div class="col_12">
-			<h3>2.「編集」ボタンで、ブロック編集できます。</h3>
-			<button id="mameEdit"><i class="fa fa-pencil"></i> 編集</a></button>
-			<p></p>
-			<pre id="exampleArea"></pre>
-			<p>.</p>
+			<h3>2.ブロック編集します。</h3>
+			<p>コードを編集するには、ブロックをドラッグ＆ドロップ、式をクリックします。</p>
+			<ul class="tabs left">
+				<li><a href="#tabr1">ブロック</a></li>
+				<li id="code_tab"><a href="#tabr2">コード</a></li>
+			</ul>
+			<div id="tabr1" class="tab-content">
+				<div id="loading_area">Edit Area:</div>
+			</div>
+			<div id="tabr2" class="tab-content">
+				<pre id="exampleArea"></pre>
+			</div>
+
 			<h3>3.「はいけい色」ブロックを、"くり返し描画する"から"初期設定する"に移動してみてください。</h3>
 			<p>マルが連続して描かれるようになります。</p>
 			<img src ="block_move_ja.png">
@@ -60,11 +68,6 @@
 		<a class="modal_close" href="#">[OK]</a>
     </div>
 
-    <div id="modal-window">
-		<a id="editor_close" href="#">[閉じる]</a>
-		<div id="loading_area">Edit Area:</div>
-    </div>
-
 	<!-- Javascript -->
 	<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="../../js/mameblock.min.js"></script>
@@ -83,34 +86,13 @@
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 			execCode();
 		}, 500);
-		
-		<!-- # Edit -->
-		$("#modal-window").mameModal({
-			overlayClose: false,
-			closeOnEscape: false
-		});
 
-		$('#mameEdit').click(function(e){
-			<!-- MAME_BLOCK.copyCodeBlock('#loading_area'); -->
-			$('#modal-window')
-				.trigger('openModal')
-				.css("top", $(window).scrollTop() + 10);
-			e.preventDefault();
-		});
-		
-		$('#editor_close').click(function(e){
-			$('#modal-window').trigger('closeModal');
-			MAME_BLOCK.reloadCodeBlock('#loading_area');
-			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-			e.preventDefault();
-		});
-			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
 			execCode();
 		});
 		
-				<!-- # Stop -->
+		<!-- # Stop -->
 		$("#mameStop").click(function() {
 			if (Pjs) {
 				Pjs.remove();
@@ -134,6 +116,11 @@
 				alert(e);
 			}
 		};
+
+		<!-- # reload to Code tab -->
+		$("#code_tab").click(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		});
 		
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {

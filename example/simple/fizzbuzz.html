@@ -21,12 +21,20 @@
 		</div>
 		<div class="col_12">			
 			<ul class="button-bar">
-				<li><a class="first" id="mameEdit" href="javascript:void(0)"><i class="fa fa-pencil"></i> Edit</a></li>
-				<li><a class="last" id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> Run</a></li>
+				<li><a id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> Run</a></li>
 			</ul>
 			<p></p>
-			<pre id="exampleArea"></pre>
-
+			<!-- Tabs Left -->
+			<ul class="tabs left">
+				<li><a href="#tabr1">Block</a></li>
+				<li id="code_tab"><a href="#tabr2">Code</a></li>
+			</ul>
+			<div id="tabr1" class="tab-content">
+				<div id="loading_area">Edit Area:</div>
+			</div>
+			<div id="tabr2" class="tab-content">
+				<pre id="exampleArea"></pre>
+			</div>
 		</div>
 		<div class="col_12">
 		<p><a href="../../index.html">go to mameblock.js</a></p>
@@ -44,11 +52,6 @@
 		<a class="modal_close" href="#">[OK]</a>
     </div>
 
-    <div id="modal-window">
-		<a id="editor_close" href="#">[Close]</a>
-		<div id="loading_area">Edit Area:</div>
-    </div>
-
 	<!-- Javascript -->
 	<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="../../js/mameblock.min.js"></script>
@@ -62,27 +65,6 @@
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		}, 500);
-		
-		<!-- # Edit -->
-		$("#modal-window").mameModal({
-			overlayClose: false,
-			closeOnEscape: false
-		});
-
-		$('#mameEdit').click(function(e){
-			<!-- MAME_BLOCK.copyCodeBlock('#loading_area'); -->
-			$('#modal-window')
-				.trigger('openModal')
-				.css("top", $(window).scrollTop() + 10);
-			e.preventDefault();
-		});
-		
-		$('#editor_close').click(function(e){
-			$('#modal-window').trigger('closeModal');
-			MAME_BLOCK.reloadCodeBlock('#loading_area');
-			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-			e.preventDefault();
-		});
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
@@ -93,6 +75,11 @@
 			mameExec();
 		});
 		
+		<!-- # reload to Code tab -->
+		$("#code_tab").click(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		});
+
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
 			codeArea.text(code);
