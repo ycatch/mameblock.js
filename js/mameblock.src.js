@@ -3308,7 +3308,7 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 		
 		/** Init Express Editor */
 		$("#modal-express").mameModal({
-			closeOnEscape: false
+			closeOnEscape: true
 		});
 
 		/** Open express editor */
@@ -3364,6 +3364,7 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 	/** Serialize and transfer from blocks to code.  =============
 	 */
 	soramame.getCodeBlock = function() {
+		soramame.buffer = $("#loading_area").html();
 		var data = $(soramame.buffer).find('.serialize .code-body').text().replace(/\t+\n/g, "");
 		data = js_beautify(data.replace(/\t+-+/g, "\n"));
 		return data;

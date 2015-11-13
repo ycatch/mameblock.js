@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- META -->
+	<title>Basic example of MameBlock.js - Javascript library for visual code editing.</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="" />
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../../css/mameblock.min.css" media="all" />
+	
+</head>
+<body>
+	<div class="grid">
+		<div class="col_12" style="margin-top:60px;">
+			<h3>Basic example of MameBlock.js</h3>
+			<p>
+				<a id="mameRun" href="javascript:void(0)">Run</a> |
+				<a id="mameCode" href="javascript:void(0)">View Code</a> |
+				<a href="../../index.html">go to mameblock.js</a>
+			</p>
+			<div>
+				<div id="loading_area">Edit Area:</div>
+			</div>
+		</div>
+		<div class="col_12" id="footer">
+			Copyright 2015 Yutaka Kachi All Rights Reserved.
+		</div>
+	</div>
+
+	<div id="modal-express">
+		<div class="modal-body">
+			<label for="expModalText">Edit expression</label><br />
+			<input id="expModalText" type="text" />
+		</div>
+		<a class="modal_close" href="#">[OK]</a>
+    </div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="../../js/mameblock.min.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		<!-- # Init -->
+		var codeArea = $("#exampleArea");
+		var codeText = MAME_BLOCK.init("#loading_area", "mameBlock_template.html");
+		/* wait for DOM building */
+		var wait0 = setTimeout(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
+		}, 500);
+			
+		<!-- # Run -->
+		$("#mameRun").click(function() {
+			<!-- get code -->
+			var codeText = MAME_BLOCK.getCodeBlock();
+			var mameExec = new Function(codeText);
+			mameExec();
+		});
+		
+		<!-- # View Code -->
+		$("#mameCode").click(function() {
+			alert(MAME_BLOCK.getCodeBlock());
+		});
+	});
+	</script>
+</body>
+</html>

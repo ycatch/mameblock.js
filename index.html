@@ -25,7 +25,7 @@
 		<div class="col_4" style="margin-top:60px;">
 			<h1>MameBlock.js</h1>
 			<p>Simple visual code editor library.</p>
-			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.4.zip"><i class="fa fa-download"></i> Download (Beta ver0.1.4)</a></p>
+			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.0.zip"><i class="fa fa-download"></i> Download (Beta ver0.2.0)</a></p>
 			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
 		</div>
 		<div class="col_8 center" style="margin-top:60px;">
@@ -47,18 +47,27 @@
 		<hr />
 		<div class="col_12">
 			<h3>Demo</h3>
-			<p>Click Edit button to open the dialog of Visual code Editor.</p>
 			<p>Click Run button to execute code.</p>
-			<p>Editor change thier code for folloing list and execution.</p>
+			<p>Drag & drop block, Click expression for edit code.</p>
 			<ul class="button-bar">
-				<li><a class="first" id="mameEdit" href="javascript:void(0)"><i class="fa fa-pencil"></i> Edit</a></li>
-				<li><a class="last" id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> Run</a></li>
+				<li><a id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> Run</a></li>
 			</ul>
 			<p></p>
-			<pre id="exampleArea"></pre>
+			<!-- Tabs Left -->
+			<ul class="tabs left">
+				<li><a href="#tabr1">Block</a></li>
+				<li id="code_tab"><a href="#tabr2">Code</a></li>
+			</ul>
+			<div id="tabr1" class="tab-content">
+				<div id="loading_area">Edit Area:</div>
+			</div>
+			<div id="tabr2" class="tab-content">
+				<pre id="exampleArea"></pre>
+			</div>
 			<hr />
 			<h3 id="example">Example</h3>
 			<ul>
+				<li><a href='example/simple/index.html'>Basic Example</a></li>
 				<li><a href='example/simple/fizzbuzz.html'>FizzBuzz Question</a></li>
 				<li><a href='example/p5.js/index.html'>p5.js - Processing</a></li>
 			</ul>
@@ -69,7 +78,7 @@
 			
 			<h4>1.Download</h4>
 			<p>Download and extract.</p>
-			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.1.4.zip"><i class="fa fa-download"></i> Download</a>
+			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.0.zip"><i class="fa fa-download"></i> Download</a>
 			
 			<h4>2.Open files</h4>
 			<p>Open index.html to same this page.</p>
@@ -92,25 +101,17 @@
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
 			
 			<h4>3.HTML</h4>
-			<p>Edit and Run Button</p>
-			<pre>&lt;a id=&quot;mameEdit&quot; href=&quot;javascript:void(0)&quot;&gt;Edit&lt;/a&gt;
-&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;</pre>
+			<p>Run Button with block area</p>
+			<pre>&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;
+&lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt; 
+&lt;div id=&quot;loading_area&quot;&gt;Edit Area:&lt;/div&gt;
+&lt;div id=&quot;tabr2&quot; class=&quot;tab-content&quot;&gt;
+    &lt;pre id=&quot;exampleArea&quot;&gt;&lt;/pre&gt;
+&lt;/div&gt;</pre>
 			
-			<p>Frame of Dialogs.</p>
-			<pre>&lt;!-- edit dialog --&gt;
-&lt;div id=&quot;modal-window&quot;&gt;
-	&lt;a id=&quot;editor_close&quot; href=&quot;#&quot;&gt;[OK]&lt;/a&gt;
-	&lt;div id=&quot;loading_area&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- express dialog --&gt;
-&lt;div id=&quot;modal-express&quot;&gt;
-	&lt;div class=&quot;modal-body&quot;&gt;
-		&lt;label for=&quot;expModalText&quot;&gt;Edit expression&lt;/label&gt;&lt;br /&gt;
-		&lt;input id=&quot;expModalText&quot; type=&quot;text&quot; /&gt;
-	&lt;/div&gt;
-	&lt;a class=&quot;modal_close&quot; href=&quot;#&quot;&gt;[OK]&lt;/a&gt;
-&lt;/div&gt;
-			</pre>
+			<p>Frame of dialog.</p>
+			<pre>&lt;!-- express dialog --&gt;
+&lt;div id=&quot;modal-express&quot;&gt;</pre>
 			
 			<h4>4.Javascript</h4>
 			<p>Load jquery and library.</p>
@@ -129,27 +130,6 @@
         var wait0 = setTimeout(function() {
             setCode(MAME_BLOCK.getCodeBlock(), codeArea);
         }, 500);
-        
-        &lt;!-- # Edit --&gt;
-        $(&quot;#modal-window&quot;).mameModal({
-            overlayClose: false,
-            closeOnEscape: false
-        });
-
-        $(&#039;#mameEdit&#039;).click(function(e){
-            &lt;!-- MAME_BLOCK.copyCodeBlock(&#039;#loading_area&#039;); --&gt;
-            $(&#039;#modal-window&#039;)
-                .trigger(&#039;openModal&#039;)
-                .css(&quot;top&quot;, $(window).scrollTop() + 10);
-            e.preventDefault();
-        });
-        
-        $(&#039;#editor_close&#039;).click(function(e){
-            $(&#039;#modal-window&#039;).trigger(&#039;closeModal&#039;);
-            MAME_BLOCK.reloadCodeBlock(&#039;#loading_area&#039;);
-            setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-            e.preventDefault();
-        });
             
         &lt;!-- # Run --&gt;
         $(&quot;#mameRun&quot;).click(function() {
@@ -159,18 +139,13 @@
             var mameExec = new Function(codeText);
             mameExec();
         });
-        
-        &lt;!-- ## set code and syntax highlight --&gt;
-        function setCode(code, codeArea) {
-            codeArea.text(code);
-            codeArea.each(function(i, block) {
-                hljs.highlightBlock(block);
-            });
-        };
-
+		
+        &lt;!-- # View code --&gt;
+        $(&quot;#mameCode&quot;).click(function() {
+            alert(MAME_BLOCK.getCodeBlock());
+        });
     });
-
-    &lt;/script&gt;
+&lt;/script&gt;
 </pre>
 			<h4>5.Misc</h4>
 			<p>You can use your favarite librarly for code-highlighter and excutting code. I use highlight.js and Function class.</p>
@@ -194,29 +169,12 @@
 			<hr />
 			<h3>News</h3>
 			<ul>
+				<li>2015.11.12 : Beta release ver.0.2.0: replace dailog to tabs</li>
 				<li>2015.08.16 : Beta release ver.0.1.4: add example of p5.js - Processing</li>
 				<li>2015.07.08 : Beta release ver.0.1.3</li>
 				<li>2015.07.07 : Beta release ver.0.1.2</li>
 				<li>2015.07.03 : Beta release ver.0.1</li>
 			</ul>
-			<hr />
-			<h3>Tips</h3>
-			<p>If you need activate "cansel" for dialog, please change Javascript code in index.html or index.ja.html. However it is not working at Google Chrome.</p>
-			<pre>
-&lt;!-- # Edit --&gt;
-$(&quot;#modal-window&quot;).mameModal({
-	overlayClose: true,
-	closeOnEscape: true
-});
-
-$(&#039;#mameEdit&#039;).click(function(e){
-	MAME_BLOCK.copyCodeBlock(&quot;#mame_template&quot;);
-	$(&#039;#modal-window&#039;)
-		.trigger(&#039;openModal&#039;)
-		.css(&quot;top&quot;, $(window).scrollTop() + 10);
-	e.preventDefault();
-});
-			</pre>
 			<hr />
 			<h3>Constraints</h3>
 			<ul>
@@ -243,11 +201,6 @@ $(&#039;#mameEdit&#039;).click(function(e){
 		<a class="modal_close" href="#">[OK]</a>
     </div>
 
-    <div id="modal-window">
-		<a id="editor_close" href="#">[Close]</a>
-		<div id="loading_area">Edit Area:</div>
-    </div>
-
 	<!-- Javascript -->
 	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="js/mameblock.min.js"></script>
@@ -261,27 +214,6 @@ $(&#039;#mameEdit&#039;).click(function(e){
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		}, 500);
-		
-		<!-- # Edit -->
-		$("#modal-window").mameModal({
-			overlayClose: false,
-			closeOnEscape: false
-		});
-
-		$('#mameEdit').click(function(e){
-			<!-- MAME_BLOCK.copyCodeBlock('#loading_area'); -->
-			$('#modal-window')
-				.trigger('openModal')
-				.css("top", $(window).scrollTop() + 10);
-			e.preventDefault();
-		});
-		
-		$('#editor_close').click(function(e){
-			$('#modal-window').trigger('closeModal');
-			MAME_BLOCK.reloadCodeBlock('#loading_area');
-			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-			e.preventDefault();
-		});
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
@@ -290,6 +222,11 @@ $(&#039;#mameEdit&#039;).click(function(e){
 			setCode(codeText, codeArea);
 			var mameExec = new Function(codeText);
 			mameExec();
+		});
+		
+		<!-- # reload to Code tab -->
+		$("#code_tab").click(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		});
 		
 		<!-- ## set code and syntax highlight -->

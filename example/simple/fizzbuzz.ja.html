@@ -21,15 +21,23 @@
 		</div>
 		<div class="col_12">			
 			<ul class="button-bar">
-				<li><a class="first" id="mameEdit" href="javascript:void(0)"><i class="fa fa-pencil"></i> 編集</a></li>
 				<li><a class="last" id="mameRun" href="javascript:void(0)"><i class="fa fa-play"></i> 実行</a></li>
 			</ul>
 			<p></p>
-			<pre id="exampleArea"></pre>
-
+			<!-- Tabs Left -->
+			<ul class="tabs left">
+				<li><a href="#tabr1">ブロック</a></li>
+				<li id="code_tab"><a href="#tabr2">コード</a></li>
+			</ul>
+			<div id="tabr1" class="tab-content">
+				<div id="loading_area">Edit Area:</div>
+			</div>
+			<div id="tabr2" class="tab-content">
+				<pre id="exampleArea"></pre>
+			</div>
 		</div>
 		<div class="col_12">
-		<p><a href="../../index.ja.html">go to mameblock.js</a></p>
+		<p><a href="../../index.ja.html">mameblock.js に戻る</a></p>
 		</div>
 		<div class="col_12" id="footer">
 			Copyright 2015 Yutaka Kachi All Rights Reserved.
@@ -42,11 +50,6 @@
 			<input id="expModalText" type="text" />
 		</div>
 		<a class="modal_close" href="#">[OK]</a>
-    </div>
-
-    <div id="modal-window">
-		<a id="editor_close" href="#">[Close]</a>
-		<div id="loading_area">Edit Area:</div>
     </div>
 
 	<!-- Javascript -->
@@ -62,27 +65,6 @@
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		}, 500);
-		
-		<!-- # Edit -->
-		$("#modal-window").mameModal({
-			overlayClose: false,
-			closeOnEscape: false
-		});
-
-		$('#mameEdit').click(function(e){
-			<!-- MAME_BLOCK.copyCodeBlock("#mame_template"); -->
-			$('#modal-window')
-				.trigger('openModal')
-				.css("top", $(window).scrollTop() + 10);
-			e.preventDefault();
-		});
-		
-		$('#editor_close').click(function(e){
-			$('#modal-window').trigger('closeModal');
-			MAME_BLOCK.reloadCodeBlock('#loading_area');
-			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
-			e.preventDefault();
-		});
 			
 		<!-- # Run -->
 		$("#mameRun").click(function() {
@@ -91,6 +73,11 @@
 			setCode(codeText, codeArea);
 			var mameExec = new Function(codeText);
 			mameExec();
+		});
+
+		<!-- # reload to Code tab -->
+		$("#code_tab").click(function() {
+			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		});
 		
 		<!-- ## set code and syntax highlight -->
