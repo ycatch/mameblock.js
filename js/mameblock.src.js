@@ -3369,15 +3369,6 @@ for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElem
 		data = js_beautify(data.replace(/\t+-+/g, "\n"));
 		return data;
 	};
-	
-	soramame.copyCodeBlock = function(code_area) {
-		$(code_area).html(soramame.buffer);
-		soramame.blockInit();
-	};
-	
-	soramame.reloadCodeBlock = function(code_area) {
-		soramame.buffer = $(code_area).html();
-	};
 
 	/** add Single Global var. */
 	if (typeof window.MAME_BLOCK == "undefined") {
