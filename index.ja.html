@@ -92,33 +92,34 @@
 			<h4>1.Files</h4>
 			<p>次のファイルとフォルダをコピーします。</p>
 			<ul>
-				<li>css</li>
-				<li>js</li>
+				<li>css/mameblock.min.css</li>
+				<li>js/jquery-1.11.2.min.js</li>
+				<li>js/mameblock.min.js</li>
 				<li>mameBlock_template.ja.html</li>
 			</ul>
 			<h4>2.CSS</h4>
-			<p>index.htmlを作成し、スタイルシートを指定します。</p>
+			<p>htmlファイルを作成し、スタイルシートを指定します。</p>
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
 			
-			<h4>3.HTML</h4>
-			<p>index.htmlに、編集およびブロックエリアを設置します。</p>
+			<h4>3.HTMLタグ</h4>
+			<p>htmlファイルに、編集およびブロックエリアを設置します。</p>
 			<pre>&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;
 &lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt; 
 &lt;div id=&quot;loading_area&quot;&gt;Edit Area:&lt;/div&gt;
 </pre>
 			
-			<p>index.htmlに、ダイアログの枠組みを設置します。</p>
+			<p>htmlファイルに、ダイアログの枠組みを設置します。</p>
 			<pre>&lt;!-- express dialog --&gt;
 &lt;div id=&quot;modal-express&quot;&gt;&lt;/div&gt;</pre>
 			
 			<h4>4.Javascript</h4>
-			<p>index.htmlに、jqueryとライブラリを読み込みます。</p>
+			<p>htmlファイルに、jqueryとライブラリを読み込みます。</p>
 			<pre>&lt;!-- Javascript --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/mameblock.min.js&quot;&gt;&lt;/script&gt;
 			</pre>
 			
-			<p>index.htmlに、制御スクリプトを読み込みます。</p>
+			<p>htmlファイルに、制御スクリプトを読み込みます。</p>
 			<pre>&lt;script type=&quot;text/javascript&quot;&gt;
     $(function() {
         &lt;!-- # Init --&gt;

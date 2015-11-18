@@ -125,31 +125,16 @@ API
 
 ### MAME_BLOCK.init("#loading_area", "mameBlock_template.html");
 
-Editダイアログを初期化する
+Editエリアを初期化する
 
- #loading_area : 親HTMLファイルに設置した、Editダイアログの枠組みを指定
+ #loading_area : 親HTMLファイルに設置した、Editエリアの枠組みを指定
 
- mameBlock_template.html : Editダイアログに読み込むテンプレートファイルを指定
+ mameBlock_template.html : Editエリアに読み込むテンプレートファイルを指定
 
 
 
 ### MAME_BLOCK.getCodeBlock()
 
 ブロック編集エリアのコードを取得する。
-
-
-### MAME_BLOCK.copyCodeBlock('#loading_area');
-
-コードバッファーからダイアログにコードをコピーする
-
-ダイアログを開くときに使う。
-
-
-
-### MAME_BLOCK.reloadCodeBlock('#loading_area');
-
-ダイアログからコードバッファーにコードを再ロードする
-
-ダイアログを閉じるときに使う。
 
 
