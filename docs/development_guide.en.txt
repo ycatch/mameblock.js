@@ -1,7 +1,7 @@
 Mameblock.js Development Guide
 =================================
 
-Mameblock.js is a Javascript Library of the Web front end for developing a visual programming editor. 
+Mameblock.js is a Javascript Library of the Web front end for development a visual programming editor. 
 
 This document explain the internal structure for development of Web apps using Mameblock.js.
 
@@ -10,7 +10,7 @@ This document explain the internal structure for development of Web apps using M
 Description
 ------------
 
-SoraMame BlocMameblock.jsk has just only 100 lines of Javascript code and some OSS libraries.  The main UI and design of Web pages are using the Bootstrap and Flat UI.   Block of drag-and-drop, are using jquery-sortable. jquery-sortable is jquery plug-in, can drag and drop the nested elements.
+Mameblock.js has just only 100 lines of Javascript code and some OSS libraries.  Block of drag-and-drop, are using jquery-sortable. jquery-sortable is jquery plug-in, can drag and drop the nested elements.
 
 It is use HTML Kickstarter for Web page and UI. You can use your favorite CSS framework.
 
@@ -18,12 +18,12 @@ It is use HTML Kickstarter for Web page and UI. You can use your favorite CSS fr
 Files
 ------------
 
-This section explain about files of SoraMame Block.
+This section explain about files of mameblock.js.
 
 
 * File structure
 
-This is file structure of SoraMame Block.
+This is file structure of mameblock.js.
 
 
  MameBlock
@@ -49,7 +49,7 @@ This is file structure of SoraMame Block.
 
 
 
-There are most important files of SoraMame Block.
+There are most important files of mameblock.js.
 
 \css\srcフォルダのcssファイルと、\js\srcフォルダのJavascriptファイルは、
 
@@ -59,21 +59,14 @@ gulpfile.js transrate from \css\src folder's css files and \js\src folder's  Jav
 Functions
 ------------
 
-This section explain about functions and code of SoraMame Block.
+This section explain about functions and code of mameblock.js.
 
 
 ### Page Design
 
-- Select of Block tab display 3 areas - tool palette, main editing and trash-can.
+- mameblock has 3 areas - tool palette, block editing area and trash-can.
 - Click expression in Block, Express line editor will pop up.
 
-
-
-### "Edit Dialog
-
-Block tab call the screen to edit the code-block. Select of Block tab display three areas - tool palette, main editing and trash-can.
-
-These three areas, I have split the grid of Bootstrap.
 
 
 ### Tool Pallet area
@@ -84,7 +77,7 @@ Block can drag-and-drop from the tool palette to the main editing area.
 
 
 
-### Block
+### Blocks
 
 Block is composed of <li> tag and can drag and drop while nested by jquery-sortable.
 
@@ -143,24 +136,15 @@ API
 
 ### MAME_BLOCK.init("#loading_area", "mameBlock_template.html");
 
-init for mameblock dialog.
+init for mameblock.
 
  #loading_area : frame of edit dialog in parent html file.
 
- mameBlock_template.html : template file to edit dialog
+ mameBlock_template.html : template file to tool pallette and edit area
 
 
 ### MAME_BLOCK.getCodeBlock()
 
-get code from code-buffer.
+get code from blocks.
 
-
-### MAME_BLOCK.copyCodeBlock('#loading_area');
-
-When open dialog, copy code form code-buffer to dialog.
-
-
-### MAME_BLOCK.reloadCodeBlock('#loading_area');
-
-When close dialog, re-load code from dialog to code-buffer.
 
