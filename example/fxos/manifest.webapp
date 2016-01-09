@@ -1,0 +1,13 @@
+{
+  "name": "LEDblink",
+  "description": "LED blink app",
+  "type": "web",
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "naokisekiguchi",
+    "url": "https://github.com/naokisekiguchi"
+  },
+  "icons": {
+    "128": "/style/icons/sensor.png"
+  }
+}
