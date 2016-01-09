@@ -1,5 +1,5 @@
 /* ===================================================
- *  jquery-sortable.js v0.9.13
+ *  jquery-sortable.js v0.9.12
  *  http://johnny.github.com/jquery-sortable/
  * ===================================================
  *  Copyright (c) 2012 Jonas von Andrian
@@ -27,9 +27,9 @@
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * ========================================================== */
 
-
 !function ( $, window, pluginName, undefined){
-  var containerDefaults = {
+  var eventNames,
+  containerDefaults = {
     // If true, items can be dragged from this container
     drag: true,
     // If true, items can be droped onto this container
@@ -86,21 +86,22 @@
     // The Placeholder has not been moved yet.
     onDrag: function ($item, position, _super, event) {
       $item.css(position)
+      event.preventDefault()
     },
     // Called after the drag has been started,
-    // that is the mouse button is being held down and
+    // that is the mouse button is beeing held down and
     // the mouse is moving.
     // The container is the closest initialized container.
     // Therefore it might not be the container, that actually contains the item.
     onDragStart: function ($item, container, _super, event) {
       $item.css({
-        height: $item.outerHeight(),
-        width: $item.outerWidth()
+        height: $item.height(),
+        width: $item.width()
       })
       $item.addClass(container.group.options.draggedClass)
       $("body").addClass(container.group.options.bodyClass)
     },
-    // Called when the mouse button is being released
+    // Called when the mouse button is beeing released
     onDrop: function ($item, container, _super, event) {
       $item.removeClass(container.group.options.draggedClass).removeAttr("style")
       $("body").removeClass(container.group.options.bodyClass)
@@ -109,7 +110,7 @@
     // Ignore if element clicked is input, select or textarea
     onMousedown: function ($item, _super, event) {
       if (!event.target.nodeName.match(/^(input|select|textarea)$/i)) {
-        event.preventDefault()
+        if (event.type.match(/^mouse/)) event.preventDefault()
         return true
       }
     },
@@ -254,7 +255,7 @@
         this.item = closestItem;
         this.itemContainer = itemContainer;
         if (this.item.is(this.options.exclude) || !this.options.onMousedown(this.item, groupDefaults.onMousedown, e)) {
-            return;
+          return;
         }
         this.setPointer(e);
         this.toggleListeners('on');
@@ -401,10 +402,11 @@
       ) >= this.options.distance)
     },
     getPointer: function(e) {
-      var o = e.originalEvent || e.originalEvent.touches && e.originalEvent.touches[0]
+      var o = e.originalEvent,
+        t = (e.originalEvent.touches && e.originalEvent.touches[0]) || {};
       return {
-        left: e.pageX || o.pageX,
-        top: e.pageY || o.pageY
+        left: e.pageX || o.pageX || t.pageX,
+        top: e.pageY || o.pageY || t.pageY
       }
     },
     setupDelayTimer: function () {
