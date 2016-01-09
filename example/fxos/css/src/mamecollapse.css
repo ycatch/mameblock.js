@@ -1,0 +1,12 @@
+/* mame collapse.css */
+
+.h_icon:before {
+  content: "\f138";
+  font-family: FontAwesome;
+  margin: 10px;
+}
+
+.h_icon.open:before {
+  content: "\f13a";
+  font-family: FontAwesome;
+}

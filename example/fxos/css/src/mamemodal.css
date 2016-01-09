@@ -1,0 +1,42 @@
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+#modal-window {
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+	top: 0px;
+	display: none;
+	padding: 30px;
+	width: 98%;
+	/* height: 98%; */
+	overflow:auto;
+}
+
+#modal-express {
+	position: relative;
+	background-color: #fff;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+	/* top: 0px; */
+	display: none;
+	padding: 30px;
+	width: 50%;
+	/* height: 30%; */
+	overflow:auto;
+ }
+
+#editor_close, .modal_close {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	display: block;
+	z-index: 2;
+}
