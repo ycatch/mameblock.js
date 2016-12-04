@@ -6,11 +6,11 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="" />
-	
+
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/mameblock.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="css/highlight_default.css" media="all" />
-	
+
 </head>
 <body>
 	<nav class="navbar">
@@ -25,7 +25,7 @@
 		<div class="col_4" style="margin-top:60px;">
 			<h1>MameBlock.js</h1>
 			<p>シンプルなビジュアルコード編集ライブラリ</p>
-			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.1.zip"><i class="fa fa-download"></i> Download (Beta ver 0.2.1)</a></p>
+			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.2.zip"><i class="fa fa-download"></i> Download (Beta ver 0.2.2)</a></p>
 			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
 		</div>
 		<div class="col_8 center" style="margin-top:60px;">
@@ -76,20 +76,20 @@
 		<hr />
 		<div class="col_12">
 			<h3>やってみる</h3>
-			
+
 			<h4>1.ダウンロード</h4>
 			<p>次のファイルをダウンロードし、解凍します</p>
 			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.1.zip"><i class="fa fa-download"></i> Download</a>
-			
+
 			<h4>2.ファイルを開く</h4>
 			<p>index.ja.htmlファイルを開くと、これと同じページが表示されます。</p>
 			<p>ビジュアルコードエディタに表示される内容は、mameBlock_template.ja.htmlファイルを読み込んでいます。</p>
 		</div>
 		<hr />
-		<div class="col_12">	
+		<div class="col_12">
 			<h3>導入する</h3>
 			<p>各種ファイルをコピーしたら、あなた自身のHTMLファイルに次の内容(css、HTML、Javascript)を設定します。</p>
-			
+
 			<h4>1.Files</h4>
 			<p>次のファイルとフォルダをコピーします。</p>
 			<ul>
@@ -101,14 +101,14 @@
 			<h4>2.CSS</h4>
 			<p>htmlファイルを作成し、スタイルシートを指定します。</p>
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
-			
+
 			<h4>3.HTMLタグ</h4>
 			<p>htmlファイルに、編集およびブロックエリアを設置します。</p>
 			<pre>&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;
-&lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt; 
+&lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt;
 &lt;div id=&quot;loading_area&quot;&gt;Edit Area:&lt;/div&gt;
 </pre>
-			
+
 			<p>htmlファイルに、ダイアログの枠組みを設置します。</p>
 			<pre>&lt;!-- express dialog --&gt;
 &lt;div id=&quot;modal-express&quot;&gt;
@@ -118,14 +118,14 @@
     &lt;/div&gt;
     &lt;a class=&quot;modal_close&quot; href=&quot;#&quot;&gt;[OK]&lt;/a&gt;
 &lt;/div&gt;</pre>
-			
+
 			<h4>4.Javascript</h4>
 			<p>htmlファイルに、jqueryとライブラリを読み込みます。</p>
 			<pre>&lt;!-- Javascript --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/mameblock.min.js&quot;&gt;&lt;/script&gt;
 			</pre>
-			
+
 			<p>htmlファイルに、制御スクリプトを読み込みます。</p>
 			<pre>&lt;script type=&quot;text/javascript&quot;&gt;
     $(function() {
@@ -136,7 +136,7 @@
         var wait0 = setTimeout(function() {
             setCode(MAME_BLOCK.getCodeBlock(), codeArea);
         }, 500);
-            
+
         &lt;!-- # Run --&gt;
         $(&quot;#mameRun&quot;).click(function() {
             &lt;!-- get code --&gt;
@@ -145,7 +145,7 @@
             var mameExec = new Function(codeText);
             mameExec();
         });
-		
+
         &lt;!-- # View code --&gt;
         $(&quot;#mameCode&quot;).click(function() {
             alert(MAME_BLOCK.getCodeBlock());
@@ -176,6 +176,7 @@
 			<hr />
 			<h3>News</h3>
 			<ul>
+				<li>2016.12.05 : Beta release ver.0.2.2: Fix bug</li>
 				<li>2015.12.28 : Beta release ver.0.2.1: add example of p5.turtle.js</li>
 				<li>2015.11.12 : Beta release ver.0.2.0: replace dailog to tabs</li>
 				<li>2015.08.16 : Beta release ver.0.1.4: add example of p5.js - Processing</li>
@@ -229,7 +230,7 @@
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		}, 500);
-			
+
 		<!-- # Run -->
 		$("#mameRun").click(function() {
 			<!-- get code -->
@@ -238,12 +239,12 @@
 			var mameExec = new Function(codeText);
 			mameExec();
 		});
-		
+
 		<!-- # reload to Code tab -->
 		$("#code_tab").click(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		});
-		
+
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
 			codeArea.text(code);

@@ -6,11 +6,11 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="" />
-	
+
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="css/mameblock.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="css/highlight_default.css" media="all" />
-	
+
 </head>
 <body>
 	<nav class="navbar">
@@ -25,7 +25,7 @@
 		<div class="col_4" style="margin-top:60px;">
 			<h1>MameBlock.js</h1>
 			<p>Simple visual code editor library.</p>
-			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.1.zip"><i class="fa fa-download"></i> Download (Beta ver 0.2.1)</a></p>
+			<p><a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.2.zip"><i class="fa fa-download"></i> Download (Beta ver 0.2.2)</a></p>
 			<p><a href="https://github.com/ycatch/mameblock.js">source code on Github</a></p>
 		</div>
 		<div class="col_8 center" style="margin-top:60px;">
@@ -76,20 +76,20 @@
 		<hr />
 		<div class="col_12">
 			<h3>Try It</h3>
-			
+
 			<h4>1.Download</h4>
 			<p>Download and extract.</p>
 			<a class="button red" href="https://github.com/ycatch/mameblock.js/archive/Beta_Ver.0.2.1.zip"><i class="fa fa-download"></i> Download</a>
-			
+
 			<h4>2.Open files</h4>
 			<p>Open index.html to same this page.</p>
 			<p>Editor load mameBlock_template.html.</p>
 		</div>
 		<hr />
-		<div class="col_12">	
+		<div class="col_12">
 			<h3>Setting</h3>
 			<p>Copy some files and folders and set these css, HTML and Javascript on your HTML file.</p>
-			
+
 			<h4>1.Files</h4>
 			<p>Copy these files</p>
 			<ul>
@@ -98,17 +98,17 @@
 				<li>js/mameblock.min.js</li>
 				<li>mameBlock_template.html</li>
 			</ul>
-			
+
 			<h4>2.CSS</h4>
 			<p>Make html file and set css</p>
 			<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/mameblock.min.css&quot; media=&quot;all&quot; /&gt;</pre>
-			
+
 			<h4>3.HTML tags</h4>
 			<p>set Run button with block area in html</p>
 			<pre>&lt;a id=&quot;mameRun&quot; href=&quot;javascript:void(0)&quot;&gt;Run&lt;/a&gt;
-&lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt; 
+&lt;a id=&quot;mameCode&quot; href=&quot;javascript:void(0)&quot;&gt;View Code&lt;/a&gt;
 &lt;div id=&quot;loading_area&quot;&gt;Edit Area:&lt;/div&gt;</pre>
-			
+
 			<p>set frame of dialog in html.</p>
 			<pre>&lt;!-- express dialog --&gt;
 &lt;div id=&quot;modal-express&quot;&gt;
@@ -118,14 +118,14 @@
     &lt;/div&gt;
     &lt;a class=&quot;modal_close&quot; href=&quot;#&quot;&gt;[OK]&lt;/a&gt;
 &lt;/div&gt;</pre>
-			
+
 			<h4>4.Javascript</h4>
 			<p>Load jquery and library in index.html.</p>
 			<pre>&lt;!-- Javascript --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;js/mameblock.min.js&quot;&gt;&lt;/script&gt;
 			</pre>
-			
+
 			<p>Load control script in index.html.</p>
 			<pre>&lt;script type=&quot;text/javascript&quot;&gt;
     $(function() {
@@ -136,7 +136,7 @@
         var wait0 = setTimeout(function() {
             setCode(MAME_BLOCK.getCodeBlock(), codeArea);
         }, 500);
-            
+
         &lt;!-- # Run --&gt;
         $(&quot;#mameRun&quot;).click(function() {
             &lt;!-- get code --&gt;
@@ -145,7 +145,7 @@
             var mameExec = new Function(codeText);
             mameExec();
         });
-		
+
         &lt;!-- # View code --&gt;
         $(&quot;#mameCode&quot;).click(function() {
             alert(MAME_BLOCK.getCodeBlock());
@@ -175,6 +175,7 @@
 			<hr />
 			<h3>News</h3>
 			<ul>
+				<li>2016.12.05 : Beta release ver.0.2.2: Fix bug</li>
 				<li>2015.12.28 : Beta release ver.0.2.1: add example of p5.turtle.js</li>
 				<li>2015.11.12 : Beta release ver.0.2.0: replace dailog to tabs</li>
 				<li>2015.08.16 : Beta release ver.0.1.4: add example of p5.js - Processing</li>
@@ -195,9 +196,9 @@
 				<li><a href="http://johnny.github.io/jquery-sortable/">jquery-sortablek</a></li>
 			</ul>
 		</div>
-		
+
 		<div class="col_12" id="footer">
-			Copyright 2015 Yutaka Kachi All Rights Reserved.
+			Copyright 2015-2016 Yutaka Kachi All Rights Reserved.
 		</div>
 	</div> <!-- End Grid -->
 
@@ -222,7 +223,7 @@
 		var wait0 = setTimeout(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		}, 500);
-			
+
 		<!-- # Run -->
 		$("#mameRun").click(function() {
 			<!-- get code -->
@@ -231,12 +232,12 @@
 			var mameExec = new Function(codeText);
 			mameExec();
 		});
-		
+
 		<!-- # reload to Code tab -->
 		$("#code_tab").click(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		});
-		
+
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
 			codeArea.text(code);
