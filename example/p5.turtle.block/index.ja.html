@@ -7,7 +7,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<meta name="description" content="Example of turtle graphics for p5.js" />
-	
+
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="../../css/mameblock.min.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="../../css/highlight_default.css" media="all" />
@@ -51,7 +51,7 @@
 			Copyright 2015 Yutaka Kachi All Rights Reserved. released under the MIT License.
 		</div>
 	</div> <!-- End Grid -->
-	
+
 	<div id="modal-express">
 		<div class="modal-body">
 			<label for="expModalText">Edit expression</label><br />
@@ -80,14 +80,14 @@ p.setup = function() {
 <pre id="code_3" hidden>
 // End of turtle code ------------------------------------------------------------
 	};
-	
+
 	p.draw = function() {
 		// Playback turtle moving for animation.
 		p.background(200);
 		turtle.draw2(pathPointer);
 		p.image(tPlane);
 		//drawSprites();
-		
+
 		pathPointer += 1;
 		if (pathPointer >= turtles_path.length) {
 			pathPointer = 0;
@@ -134,20 +134,20 @@ p.setup = function() {
 			var y0 = this.y;
 			var xx = Math.sin(this.angleInRadians);
 			var yy = Math.cos(this.angleInRadians);
-			
+
 			var count = p.abs(p.int(length / this.step));
 			var dir = 1;
 			if(length < 0) {dir = -1};
-			
+
 			for(var i=0; i < count - 1; i++) {
 				this.x += dir * this.step * xx;
 				this.y += dir * this.step * yy;
-				this.copy();			
+				this.copy();
 			}
-			
+
 			this.x = x0 + length * xx;
 			this.y = y0 + length * yy;
-			
+
 /* 			if (this.penDown) {
 				p.stroke(this.penColor);
 				p.strokeWeight(this.lineWidth);
@@ -155,36 +155,36 @@ p.setup = function() {
 			} */
 			this.copy();
 		};
-		
+
 		this.back = function(length) {
 			this.forward(-length);
 		};
-		
+
 		this.left = function(angleInDegrees) {
 			var angle0 = this.angleInRadians;
 			var targetAngle = angleInDegrees * Math.PI / 180.0;
-			
+
 			var count = p.abs(p.int(targetAngle / this.stepAngle));
 			var dir = 1;
 			if(targetAngle < 0) {dir = -1};
-			
+
 			for(var i=0; i < count - 1; i++) {
 				this.angleInRadians += dir * this.stepAngle;
 				this.copy();
 			}
-			
+
 			this.angleInRadians = angle0 + targetAngle;
 			if(targetAngle >= Math.PI) {
 				targetAngle -= Math.PI;
 			}
 			this.copy();
 		};
-		
+
 		this.right = function(angleInDegrees) {
 			this.left(-angleInDegrees);
 		};
 
-	
+
 		// copy TBody object
 		this.copy = function() {
 			turtles_path.push(new p.TBody());
@@ -193,11 +193,11 @@ p.setup = function() {
 				target[prop] = this[prop];
 			}
 		};
-		
+
 		// drawing turtle in loop
 		this.draw2 = function(pointer) {
 			var target = turtles_path[pointer];
-			
+
 			// draw path by Pen
 			if (target.penDown) {
 				tPlane.strokeWeight(target.lineWidth);
@@ -221,7 +221,7 @@ p.setup = function() {
 	<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="../../js/mameblock.min.js"></script>
 	<script type="text/javascript" src="../../js/highlight.pack.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.7/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
 		var Pjs;
@@ -234,24 +234,26 @@ p.setup = function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 			execCode();
 		}, 500);
-		
+
 		<!-- # Run -->
 		$("#mameRun").click(function() {
 			execCode();
 		});
-		
+
 		<!-- # Stop -->
 		$("#mameStop").click(function() {
 			if (Pjs) {
-				Pjs.remove();
+				//Pjs.remove();
+				Pjs.background(200);
 			}
 		});
-		
+
 		function execCode() {
 			<!-- stop and clear -->
 			if (Pjs) {
-				Pjs.remove();
+				//Pjs.remove();
 				Pjs.noCanvas();
+				Pjs.background(200);
 			}
 
 			<!-- get code -->
@@ -259,7 +261,7 @@ p.setup = function() {
 			var code2 = MAME_BLOCK.getCodeBlock();
 			var code3 = document.getElementById('code_3').textContent;
 			var codeText = code1 + code2 + code3;
-			
+
 			setCode(code2, codeArea);
 			try {
 				var s = new Function("p", codeText);
@@ -273,7 +275,7 @@ p.setup = function() {
 		$("#code_tab").click(function() {
 			setCode(MAME_BLOCK.getCodeBlock(), codeArea);
 		});
-		
+
 		<!-- ## set code and syntax highlight -->
 		function setCode(code, codeArea) {
 			codeArea.text(code);
@@ -284,7 +286,7 @@ p.setup = function() {
 
 	});
 	</script>
-	
+
 </body>
 
 </html>
