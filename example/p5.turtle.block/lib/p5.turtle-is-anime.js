@@ -2,7 +2,7 @@
  Copyright 2015 Yutaka Catch.
 
  instance mode and draw with animation.
- release under the MIT License.
+ released under the MIT License.
  **/
 
 var Pjs;
@@ -11,41 +11,54 @@ var s = function(p) {
 	var turtles_path = [];	// array of Turtle objects
 	var pathPointer = 0;
 	var turtle;
-	// var turtleSprite;
+	var turtleSprite;
 	var tPlane;				// graphic plane for pen layer
 
 	p.setup = function() {
 		p.createCanvas(480, 360);
 		p.background(200);
-		p.fill(255);
+		// p.fill(200);
 
-		tPlane = p.createGraphics(p.width, p.height);		// pen layer
-		
-		// Start turtle code - recode turtle moving. -------------------------------------
+		// pen layer
+		tPlane = p.createGraphics(480, 360, 0, 0);
+		//tPlane = p.createImage(480, 360, 0, 0);
+		//tPlane = this
+
+		turtleSprite = p.createSprite(0, 0, 56, 64);
+		turtleSprite.addAnimation("moving", "turtle_1.png", "turtle_4.png");
+		turtleSprite.changeAnimation("moving");
+
+		// Start turtle code - recording turtle move. -------------------------------------
 		turtle = new p.Turtle();
-		turtle.x = 200;
-		turtle.y = 80;
-		// turtle.angleInRadians = Math.PI / 360 * 90;
+		turtle.x = 120;
+		turtle.y = 150;
+		turtle.angleInRadians = Math.PI / 360 * 90;
 		turtle.penDown = true;
 		turtle.penColor = turtle.color.blue;
 
-		for(var i = 0; i < 36; i++){
+		for(var i = 0; i < 18; i++){
 			turtle.forward(200);
-			turtle.left(170);
+			turtle.left(100);
 		};
-		// End of turtle code ------------------------------------------------------------
+		// // End of turtle code ------------------------------------------------------------
 	};
-	
+
 	p.draw = function() {
 		// Playback turtle moving for animation.
 		p.background(200);
 		turtle.draw2(pathPointer);
+
 		p.image(tPlane);
-		//drawSprites();
-		
+		//turtleSprite.position.x = p.mouseX;
+		//turtleSprite.position.y = p.mouseY;
+		p.drawSprites();
+
 		pathPointer += 1;
 		if (pathPointer >= turtles_path.length) {
 			pathPointer = 0;
+			// p.fill(200);
+			// p.noStroke();
+			// p.rect(0, 0, p.width, p.height);
 			tPlane.fill(200);
 			tPlane.noStroke();
 			tPlane.rect(0, 0, p.width, p.height);
@@ -89,20 +102,20 @@ var s = function(p) {
 			var y0 = this.y;
 			var xx = Math.sin(this.angleInRadians);
 			var yy = Math.cos(this.angleInRadians);
-			
+
 			var count = p.abs(p.int(length / this.step));
 			var dir = 1;
 			if(length < 0) {dir = -1};
-			
+
 			for(var i=0; i < count - 1; i++) {
 				this.x += dir * this.step * xx;
 				this.y += dir * this.step * yy;
-				this.copy();			
+				this.copy();
 			}
-			
+
 			this.x = x0 + length * xx;
 			this.y = y0 + length * yy;
-			
+
 /* 			if (this.penDown) {
 				p.stroke(this.penColor);
 				p.strokeWeight(this.lineWidth);
@@ -110,36 +123,36 @@ var s = function(p) {
 			} */
 			this.copy();
 		};
-		
+
 		this.back = function(length) {
 			this.forward(-length);
 		};
-		
+
 		this.left = function(angleInDegrees) {
 			var angle0 = this.angleInRadians;
 			var targetAngle = angleInDegrees * Math.PI / 180.0;
-			
+
 			var count = p.abs(p.int(targetAngle / this.stepAngle));
 			var dir = 1;
 			if(targetAngle < 0) {dir = -1};
-			
+
 			for(var i=0; i < count - 1; i++) {
 				this.angleInRadians += dir * this.stepAngle;
 				this.copy();
 			}
-			
+
 			this.angleInRadians = angle0 + targetAngle;
 			if(targetAngle >= Math.PI) {
 				targetAngle -= Math.PI;
 			}
 			this.copy();
 		};
-		
+
 		this.right = function(angleInDegrees) {
 			this.left(-angleInDegrees);
 		};
 
-	
+
 		// copy TBody object
 		this.copy = function() {
 			turtles_path.push(new p.TBody());
@@ -148,26 +161,29 @@ var s = function(p) {
 				target[prop] = this[prop];
 			}
 		};
-		
+
 		// drawing turtle in loop
 		this.draw2 = function(pointer) {
 			var target = turtles_path[pointer];
-			
+
 			// draw path by Pen
 			if (target.penDown) {
+				//p.strokeWeight(target.lineWidth);
+				//p.stroke(target.penColor);
 				tPlane.strokeWeight(target.lineWidth);
 				tPlane.stroke(target.penColor);
 				var nextPointer = pointer + 1;
 				if(nextPointer >= turtles_path.length) {
 					nextPointer = 0;
 				}
+				//p.line(target.x, target.y, turtles_path[nextPointer].x, turtles_path[nextPointer].y);
 				tPlane.line(target.x, target.y, turtles_path[nextPointer].x, turtles_path[nextPointer].y);
 			}
 
 			// draw turtle by sprite
-	/* 		turtleSprite.rotation = target.angleInRadians * -180 / Math.PI + 180;
+	 		turtleSprite.rotation = target.angleInRadians / Math.PI * (-180) + 180;
 			turtleSprite.position.x = target.x;
-			turtleSprite.position.y = target.y; */
+			turtleSprite.position.y = target.y;
 		};
 	};
 
